@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 13</title>
+</head>
+
+<body>
+    <h1>Exercícios com Strings</h1>
+    <script src="js/main.js"></script>
+</body>
+
+<script>
+    const strName = 'Douglas Fernando de Faria Lima';
+    const name = prompt('Informe seu nome completo:');
+
+    document.body.innerHTML = `O seu nome é <strong>"${name}"</strong>.</br>`;
+    document.body.innerHTML += `O seu nome tem <strong>"${name.length}" letras.</br>`;
+    document.body.innerHTML += `A segunda letra do seu nome é <strong>"${name[1]}"</strong>.</br>`; //name.charAt(1 )
+    document.body.innerHTML += `Qual o primeiro índice da letra F do seu nome? <strong>${name.indexOf("F")}</strong></br>`;
+    document.body.innerHTML += `Qual o último índice da letra F no seu nome? <strong>${name.lastIndexOf('F')}</strong></br>`;
+    document.body.innerHTML += `As últimas 3 letras do seu nome são: <strong>${name.slice(name.indexOf('L') + 1, name.length)}</strong></br>`;
+    document.body.innerHTML += `As palavras do seu nome são: <strong>${name.split(' ')}</strong></br>`;
+    document.body.innerHTML += `O seu nome em letra maiúsculas: <strong>${name.toUpperCase()}</strong></br>`;
+    document.body.innerHTML += `O seu nome em letra minúsculas: <strong>${name.toLowerCase()}</strong></br>`;
+</script>
+
+</html>
