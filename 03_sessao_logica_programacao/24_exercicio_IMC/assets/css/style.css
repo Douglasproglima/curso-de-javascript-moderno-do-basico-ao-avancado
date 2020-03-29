@@ -1,31 +1,63 @@
 :root {
-    --primary-color: (rgb(97, 233, 97), rgb(255, 170, 72), rgb(88, 88, 255));
-    --primary-color-dark: (rgb(67, 151, 67), rgb(184, 122, 51), rgb(60, 60, 182));
-    --primary-color-dark-active: (rgb(27, 65, 27), rgb(107, 71, 29), rgb(29, 29, 95));
+    --indigo: #675aa9;
+    --indigo-houver: #7d6dca;
+    --indigo-active: #605499;
+    --indigo-result: rgb(--indigo, --indigo-houver, --indigo-active);
+    --white: #fff;
+    --success: #10c469;
+    --info: #35b8e0;
+    --warning: #f9c851;
+    --danger: #ff5b5b;
+    --light: #323a46;
+    --dark: #f1f5f7;
+    --purple: #5b69bc;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Roboto",sans-serif;
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 * {
     box-sizing: border-box;
     outline: 0;
-    color: rgb(106, 108, 189);
+    color: var(--dark);
 }
 
-body {
+body{
     margin: 0;
     padding: 0;
-    background-color: rgb(68, 67, 67);
-    background: var(primary-color);
+    text-align: left;
     font-family: 'Open sans', sans-serif;
     font-size: 1.3em;
+    font-weight: 400;
     line-height: 1.5em;
+    background-color: #282e38;
+    background: #282e38;
+    color: var(--dark);
 }
 
-.container {
+h1 {
+    text-transform: uppercase;
+}
+
+hr {
+    margin: 20px 0;
+    border: 2px;
+    border-top: 3px solid var(--indigo);
+  }
+
+.container{
     max-width: 640px;
     margin: 50px auto;
-    background: rgb(235, 233, 233);
-    padding: 20px;
+    padding: 1.5rem;
     border-radius: 15px;
+    background: #323a46;
+    box-sizing: border-box;
+    box-shadow: 0em 0rem 5rem #546072;
+    border: 3px solid var(--indigo-houver)
 }
 
 form input, form label, form button {
@@ -36,33 +68,33 @@ form input, form label, form button {
 }
 
 form input {
-    font-size: 24px;
-    height: 50px;
+    font-size: 18px;
+    height: 40px;
     padding: 0 20px;
     color: rgb(43, 41, 41);
 }
 
 form input:focus {
-    outline: 3px solid var(--primary-color);
+    outline: 3px solid var(--dark);
 }
 
 form button {
     border: none;
-    background: rgb(106, 108, 189);
-    color: rgb(235, 233, 233);
+    background: var(--indigo);
+    color: var(--dark);
     font-size: 18px;
     font-weight: 700;
-    height: 50px;
+    height: 40px;
     cursor: pointer;
     margin-top: 25px;
 }
 
 form button:hover {
-    background: rgb(67, 68, 134);
+    background: var(--indigo-houver);
 }
 
 form button:active {
-    background: var(--primary-color-dark-active);
+    background: var(--indigo-active);
 }
 
 /* Tabela Superior */
@@ -70,25 +102,32 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 2px solid rgb(207, 204, 204)
+    border: 2px solid var(--indigo-active);
+    margin-top: 20px;
   }
   
   th, td {
-    text-align: left;
+    text-align: center;
     padding: 10px;
   }
   
   tr:nth-child(even) {
-    background-color: #cecbcb;
+    background-color: var(--indigo-active);
   }
 
 /* Resultado  */
 .paragrafo-result {
-   background: rgb(207, 204, 204);
+   background: var(--indigo-result);
    margin-top: 20px;
+   padding: 10px;
+   border-radius: 15px;
+   background: #323a46;
+   box-sizing: border-box;
+   box-shadow: 0em 0rem 5rem #546072;
+   border: 3px solid var(--indigo-houver)
 }
 
 .paragrafo-result-error {
-    background: rgb(233, 138, 138);
+    background: var(--indigo-result);
     margin-top: 20px;
  }

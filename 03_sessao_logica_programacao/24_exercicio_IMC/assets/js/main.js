@@ -51,7 +51,7 @@ function contextMain(){
         
         const imc = getIMC(weight, height);
         const rangeIMC = getRangeIMC(imc);
-        console.log(imc, rangeIMC);
+        //console.log(imc, rangeIMC);
 
         const msg = `Seu IMC é ${imc} - (${rangeIMC}).`;
 
