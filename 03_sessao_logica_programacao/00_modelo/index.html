@@ -1,34 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
-    <title>Title</title>
+    
+    <title>Document</title>
 </head>
 <body>
     <section class="container">
-        <h1>Template Default</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet illo explicabo eos necessitatibus.</p>
+        <h1>Tabela X</h1><hr>
+        <div class="legend">
+            <table>
+                <tr>
+                  <th>COLUNA 1</th>
+                  <th>COLUNA 2</th>
+                </tr>
+                <tr>
+                  <td>01</td>
+                  <td>02</td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td>04</td>
+                </tr>
+              </table>
+        </div>
 
-        <form action="" method="">
-            <label for="">Label 1</label>
-            <input id="input-test-1"type="text">
+        <h1>INPUTS</h1><hr>
+        <form class="form-imc" action="" method="">
+            <label for="weight">Label 1</label>
+            <input id="weight" type="number" step="any">
             
-            <label for="">Label 2</label>
-            <input id="input-test-2" type="email">
+            <label for="height">Label 2</label>
+            <input id="height" type="number" step="any">
             
-            <label for="input-test-3">Label 3</label>
-            <input id="input-test-3" type="password">
-    
-            <label for="input-test-4">Label 3</label>
-            <input id="input-test-4" type="number">
-    
-            <button>Enviar</button>
+            <button type="submit">Enviar</button>
+
+            <div class="result"></div>
         </form>
     </section>
-    
+
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
