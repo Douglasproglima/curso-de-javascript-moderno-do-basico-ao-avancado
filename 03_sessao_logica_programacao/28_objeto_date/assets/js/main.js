@@ -18,8 +18,8 @@ console.log('Segundos: ', dateString.getSeconds());
 console.log('Milesegundos: ', dateString.getMilliseconds());
 console.log('Dia da Semana: ', dateString.getDay()); //0 - Dom, 1 - Seg, 2 -Ter, 3 - Qua, 4 - Qui, 5 - Sex, 6 -Sab
 
-dateNumber = Date.now();
-dataAtual = Date(dateNumber);
+const dateNumber = Date.now();
+const dataAtual = Date(dateNumber);
 console.log('Data Atual: ', dateFormatPtBR(dateString, true));
 
 function dateFormatPtBR(date, is_showSeconds){
