@@ -47,9 +47,40 @@ function formatDatePtBr(date, separator){
     return date.toISOString().substr(0, 10).split('-').reverse().join(separator);
 }
 
-function updateTimeForHTML(){
+/*function updateTimeForHTML(){
     const h3 = document.querySelector('.container h3');
     h3.innerHTML = `${formatDateExtensionPtBr(dateNow)}`;
+}*/
+
+/* TODA TRANQUEIRADA ACIMA PODE SER SUBSTUIDO POR: */
+function getDateExtesionPtBr(options){
+    let d = new Date(), displayDate;
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)
+        displayDate = d.toLocaleDateString('pt-BR');
+    else
+        displayDate = d.toLocaleDateString('pt-BR', options);
+
+    return displayDate;
 }
 
+function getDateExtesionPtBr(date, options){
+    let d = date, displayDate;
+    if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1)
+        displayDate = d.toLocaleDateString('pt-BR');
+    else
+        displayDate = d.toLocaleDateString('pt-BR', options);
+
+    return displayDate;
+}
+
+function updateTimeForHTML(){
+    const h3 = document.querySelector('.container h3');
+    const options = {
+        dateStyle: 'full',
+        timeStyle: 'short'
+    };
+    
+    h3.innerHTML = `${getDateExtesionPtBr(dateNow, options)} ${getTimePtBr()}`;
+    //h3.innerHTML = `${dateNow.toLocaleDateString('pt-BR', options)} ${getTimePtBr()}`;
+}
 var timeNow = setInterval(updateTimeForHTML, 1000);
