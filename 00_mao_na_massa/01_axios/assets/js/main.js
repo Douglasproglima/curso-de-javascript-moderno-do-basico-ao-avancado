@@ -9,8 +9,8 @@ const api = {
 
         fetch(URL)
         .then(res => res.json())
-        .then((json) => {
-            for(const character of json){
+        .then((characters) => {
+            for(const character of characters){
                 const name = character.name;
                 const nickName = character.nickname;
                 const birthday = character.birthday;
@@ -26,6 +26,7 @@ const api = {
                 //result.innerHTML += `${name}</br>`;
             }
 
+            console.log(characters);
             container.innerHTML = contentHTML;
         })
     }
