@@ -63,7 +63,7 @@ function contextBreakingBad(){
 //contextBreakingBad();
 
 function contextPeoples(){
-    const peoples = {
+    let peoples = {
         name: 'Douglas',
         'user': 'proglima',
         'email': 'douglasproglima@gmail.com',
