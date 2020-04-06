@@ -24,7 +24,6 @@
     box-sizing: border-box;
     outline: 0;
     color: var(--dark);
-    margin: 0 auto;
 }
 
 body{
@@ -36,7 +35,7 @@ body{
     font-weight: 400;
     line-height: 1.5em;
     background-color: #282e38;
-    background: #978cf8;
+    background: #282e38;
     color: var(--dark);
 }
 
@@ -45,17 +44,11 @@ h1 {
     text-align: center;
 }
 
-h3 {
-    text-align: center;
-    font-family: 'Open sans', sans-serif;
-    font-size: 1.9em;
-}
-
 hr {
     margin: 20px 0;
     border: 2px;
     border-top: 3px solid var(--indigo);
-}
+  }
 
 .container{
     max-width: 640px;
@@ -66,6 +59,39 @@ hr {
     box-sizing: border-box;
     box-shadow: 0em 0rem 5rem #546072;
     border: 3px solid var(--indigo-houver)
+}
+
+.clock {
+    font-size: 3em;
+    text-align: center;
+}
+
+.pause {
+    color: var(--danger);
+}
+
+p {
+    font-size: 3em;
+    text-align: center;
+}
+
+p button{
+    border: none;
+    background: var(--indigo);
+    color: var(--dark);
+    font-size: 18px;
+    font-weight: 700;
+    height: 40px;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+p button:hover {
+    background: var(--indigo-houver);
+}
+
+p button:active {
+    background: var(--indigo-active);
 }
 
 form input, form label, form button {
@@ -138,4 +164,4 @@ table {
 .paragrafo-result-error {
     background: var(--indigo-result);
     margin-top: 20px;
-}
+ }
