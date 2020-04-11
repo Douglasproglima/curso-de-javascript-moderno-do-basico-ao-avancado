@@ -40,6 +40,7 @@ body{
     line-height: 1.5em;
     background-color: #282e38;
     background: #282e38;
+    background-position: right center;
     color: var(--dark);
 }
 
@@ -83,9 +84,17 @@ div input:focus {
     outline: 3px solid var(--dark);
 }
 
+.btn-grad {
+    background-image: linear-gradient(to right, #5C258D 0%, #4389A2 51%, #5C258D 100%)
+}
+.btn-grad:hover { 
+    background-position: right center; 
+}
+
 div button {
     border: none;
-    background: var(--indigo);
+    /* background: var(--indigo); */
+    background-image: linear-gradient(to right, #5C258D 0%, #4389A2 51%, #5C258D 100%);
     color: var(--dark);
     font-size: 20px;
     font-weight: 700;
@@ -95,6 +104,7 @@ div button {
 }
 
 div button:hover {
+    background-position: right center; 
     background: var(--indigo-houver);
 }
 
@@ -149,4 +159,11 @@ table {
 
 .btn-eq:active {
     background: var(--eq-orange-acitve);
+}
+
+.btn-eq {
+    background-image: linear-gradient(to right, #FF8008 0%, #FFC837 51%, #FF8008 100%)
+}
+.btn-eq:hover { 
+    background-position: right center; 
 }
