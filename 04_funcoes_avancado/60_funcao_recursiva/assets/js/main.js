@@ -3,7 +3,7 @@ CONSTRUCTOR FUNCTIONS - Funções Recursiva
 */
 const array = [];
 function recursive(max){
-  if(max >= 5000) return;
+  if(max >= 5000) return; Number.
   max++;
   recursive(max);
   array.unshift(max); 
