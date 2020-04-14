@@ -47,7 +47,7 @@ function Product(description, purchasePrice, salesPrice, stock, active){
   });
 }
 
-console.log('----------------------------PRODUTO----------------------------');
+console.log('----------------------------PRODUTO CONSTRUCTOR FUNCTION----------------------------');
 const cellPhone = new Product('Samsung Galaxy A30', 1.800, 2.600);
 cellPhone.stock = 20;
 //delete cellPhone.stock //configurable: true deixa apagar a chave
@@ -57,7 +57,7 @@ console.log(cellPhone, cellPhone.stock);
 console.log(Object.keys(cellPhone));
 
 
-console.log('----------------------------FACTORY FUNCTION----------------------------');
+console.log('----------------------------PRODUTO FACTORY FUNCTION----------------------------');
 function createProduct(description, salesPrice, purchasePrice, stock, active){
   return {
     get description(){ return description; },
