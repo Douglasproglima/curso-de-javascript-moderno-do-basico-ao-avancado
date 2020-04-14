@@ -30,10 +30,10 @@ funcao3(2, undefined, 20); //Foi passado somente o primeiro parametro
 /* ATRIBUICAO DE PARAMETROS VIA DESESTRUTURACAO */
 //#region  OBJETO
 console.log('');
-function funcao4({name, firstName, old}){
-    console.log(name, firstName, old);
+function funcao4({name, lastName, old}){
+    console.log(name, lastName, old);
 }
-let pessoa = { name: 'Douglas', firstName: 'Lima', old: 32 }; 
+let pessoa = { name: 'Douglas', lastName: 'Lima', old: 32 }; 
 funcao4(pessoa);
 //#endregion
 

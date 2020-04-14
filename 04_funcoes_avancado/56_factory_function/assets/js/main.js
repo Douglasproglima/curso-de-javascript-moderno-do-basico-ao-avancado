@@ -1,9 +1,9 @@
 //FACTORY FUNCTIONS - Funções que retornam um Objeto
 
-function setPessoas(name, firstName, old, birtday, w, h){
+function setPessoas(name, lastName, old, birtday, w, h){
   return{
     name,
-    firstName,
+    lastName: lastName,
     old,
     birtday,
     weight: w,
@@ -11,14 +11,14 @@ function setPessoas(name, firstName, old, birtday, w, h){
 
     //Getter
     get allName() {
-      return `${this.name} ${this.firstName}`;
+      return `${this.name} ${this.lastName}`;
     },
 
     //Setter
     set allName(param){
       param = param.split(' ');
       this.name = param.shift();
-      this.firstName = param.join(' ');
+      this.lastName = param.join(' ');
     },
 
     imc: function(){

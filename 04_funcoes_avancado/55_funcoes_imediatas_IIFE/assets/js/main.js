@@ -9,12 +9,12 @@ function escopeLima() {
 escopeLima();
 
 //Formato (function(n1, n2){body....})(1, 2)
-(function(name, firstName){
+(function(name, lastName){
   
   function getName(){ return name; }
-  function getFirstName(){ return firstName; }
+  function getLastName(){ return lastName; }
   function getAllName(){
-    console.log(`Nome Completo: ${getName()} ${getFirstName()}`);
+    console.log(`Nome Completo: ${getName()} ${getLastName()}`);
   }
 
   getAllName();

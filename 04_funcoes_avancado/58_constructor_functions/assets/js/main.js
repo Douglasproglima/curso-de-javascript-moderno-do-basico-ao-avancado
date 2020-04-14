@@ -5,16 +5,16 @@ EXEMPLO:
   Factory Function....: createPeople(...){....};
   Constructor Function: const nameVariavel = new People(...);
 */
-function People(name, firstName){
+function People(name, lastName){
   //Atributos/Métodos Privados
   const ID = 1;
   const metodoPrivado = function() { console.log(`${this.name } : Sou método privado.`) };
   
   //Atributos/Métodos Públicos
   this.name = name;
-  this.firstName = firstName;
+  this.lastName = lastName;
 
-  this.metodoPublico = function(){ console.log(`${ID} ${this.name } ${this.firstName}: Sou método público.`); };
+  this.metodoPublico = function(){ console.log(`${ID} ${this.name } ${this.lastName}: Sou método público.`); };
 }
 
 const people1 = new People('Douglas', 'Lima');
