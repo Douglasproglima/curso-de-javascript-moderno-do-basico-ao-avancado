@@ -25,6 +25,7 @@ console.log('/**************************...SPREAD**************************/');
 const productClone = {...product};
 
 console.log('/**************************OBJECT ASSIGN******************************/');
+//Para fazer uma copia, a outra forma é usando o oject.assign(objA, objB)
 const productClone2 = Object.assign({}, product);
 
 productCloneFake.descriptor = 'Alterado o valor'; //Alterou o objeto clone mas alterou tambem o produto
