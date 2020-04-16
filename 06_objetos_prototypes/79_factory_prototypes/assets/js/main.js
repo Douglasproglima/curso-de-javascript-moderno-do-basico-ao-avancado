@@ -66,4 +66,4 @@ function user(userName, email, password){
 }
 
 const admin = user('douglasproglima', 'douglasproglima@gmail.com', '123456');
-console.log(admin);
+console.log(admin);   
