@@ -1,70 +1,52 @@
-//const CPF = '705.484.450-52';
-const CPF = '081.873.870-76';
-const COUNTDOWN_ONE = [10, 9, 8, 7, 6, 5, 4, 3, 2];
-const COUNTDOWN_TWO = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
+//const CPF = '111.111.111-11'; 
+//const CPF = '185.844.856-76';
+//const CPF = '705.484.450-52'; 
+const CPF = '076.392.316-80'; 
+const INITIAL_COUNTDOWN = 0;
 
-function contextMain(){
+function ValidateCPF(paramCPF){
+    Object.defineProperty(this, 'cleanCPF', {
+        enumerable: true,
+        get: function(){
+            return paramCPF.replace(/\D+/g, '');
+        }
+    });
+}
 
-    //#region Méthods
-    const unFormatCPF = (paramCPF) => paramCPF.replace(/\D+/g, '');
-    const formatCpf = (strCPF) => strCPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g,"\$1.\$2.\$3\-\$4");
+ValidateCPF.prototype.validate = function() {
 
-    function getNineFirstNumbers(paramCPF) {
-        const cpfNumberStr = unFormatCPF(paramCPF);
-        const nineFirstNumbersOfCpf = cpfNumberStr.slice(0, 9);
-        return nineFirstNumbersOfCpf;
-    };
+    if(this.cleanCPF === 'undefined') return false;
+    if(this.cleanCPF.length !== 11) return false;
+    if(this.isSequencialNumeric()) return false;
+    
+    const partialCPF = this.cleanCPF.slice(0, -2);
+    const firstDigit = this.createDigit(partialCPF);
+    const secondDigit = this.createDigit(partialCPF + firstDigit);
+    const newCPF = partialCPF + firstDigit + secondDigit;
 
-    function multiplyNumbers(arrayCountdown, arrayCPF){
-        
-        return arrayCPF.map((number, index) => {
-            let countdownInt = parseInt(arrayCountdown[index]);
-            let elementToInt = parseInt(number);
-            return countdownInt * elementToInt;
-        });
-    }
+    return newCPF === this.cleanCPF;
+}
 
-    function sumNumbers(numberList){
-        const INITIAL_COUNTDOWN = 0;
-        return numberList.reduce((sumNumber, numbers) => (sumNumber + numbers), INITIAL_COUNTDOWN);
-    }
+ValidateCPF.prototype.isSequencialNumeric = function(){
+    const sequencial = this.cleanCPF[0].repeat(this.cleanCPF.length);
+    return sequencial === this.cleanCPF;
+}
 
-    function getNewNumber(number) {
-        const formula = (11 - (number % 11));
-        return validateNewNumber(formula);
-    }
-
-    const createNewCPF = (strCPF, firstDigit, secondDigit) =>  `${strCPF}${firstDigit}${secondDigit}`;
-    const validateNewNumber = (number) => number > 9 ? 0 : number;
-    const isValidateCPF = (originalCPF, newCPF) => originalCPF === newCPF;
-    //#endregion
-
-    //#region Method Main
-    function validateCPF(paramCPF){
-        const strCPF = getNineFirstNumbers(paramCPF); //9 digitos do CPF sem os caracteres
-        const arrayCPF = Array.from(strCPF); //Transforma cada numero em um elemento do array
-        
-        const firstStreak = multiplyNumbers(COUNTDOWN_ONE, arrayCPF);
-        const sumFirstNumber = sumNumbers(firstStreak);
-        const firstNumber = getNewNumber(sumFirstNumber);
-        
-        //Faz a cópia do array original para adicionar o novo número gerado pela sequencia regressiva um
-        const arrayCopyCPF = [...arrayCPF];
-        arrayCopyCPF.push(firstNumber);
-
-        const secondStreak = multiplyNumbers(COUNTDOWN_TWO, arrayCopyCPF);
-        const sumSecondNumber = sumNumbers(secondStreak);
-        const secondNumber = getNewNumber(sumSecondNumber);
-        const newCPF = createNewCPF(strCPF, firstNumber, secondNumber);
-
-        const originalCPF = unFormatCPF(paramCPF);
-        const isValidCPF = isValidateCPF(originalCPF, newCPF);
-        const formatedCPF = formatCpf(originalCPF);
-
-        return isValidCPF ? `CPF "${formatedCPF}" válido.` : `CPF "${formatedCPF}" Inválido.`;
-    }
-    //#endregion
-
-    console.log(validateCPF(CPF));
+ValidateCPF.prototype.createDigit = function(partialCPF){
+    const arrayCPF = Array.from(partialCPF);
+    let countDown = arrayCPF.length + 1;
+    const sumNumber = arrayCPF.reduce((acumulate, value) => {
+        acumulate += (countDown * Number(value));
+        countDown--;
+        return acumulate;
+    }, INITIAL_COUNTDOWN);
+    
+    const digit = (11 - (sumNumber % 11));
+    return digit > 9 ? '0' : String(digit);
 };
-contextMain();
+
+const cpf = new ValidateCPF(CPF);
+if(cpf.validate())
+    console.log(`O CPF ${CPF} é válido.`);
+else
+    console.log(`O CPF ${CPF} é inválido.`);
