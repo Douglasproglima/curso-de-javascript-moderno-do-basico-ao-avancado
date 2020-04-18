@@ -1,0 +1,4 @@
+user_id;name;email;tax_number;phone;address;website;currency_code;enabled;reference
+1;JAPÃO;;;;;;BRL;1;
+1;FGTS;;;;;;BRL;1;
+1;Outras Fontes;;;;;;BRL;1;
