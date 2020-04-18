@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/custom.css?v=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css?v=1.0">
+
+    <title>Aula 85</title>
+</head>
+
+<body>
+
+    <section class="container">
+        <div class="form-group">
+            <p>
+                <input type="radio" name="optradio" value="F" onclick="pessoa(this.value);" checked>
+                <label class="radio-inline col-sm-4">Pessoa Fisica</label>
+                <input type="radio" name="optradio" value="J" onclick="pessoa(this.value);">
+                <label class="radio-inline col-sm-4">Pessoa Juridica</label>
+            </p>
+        </div>
+
+        <div id="juridica" style="display:none;">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="txtRazaosocial">Razão Social: *</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtRazaosocial" name="txtRazaosocial" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="txtNomefantasia">Nome Fantasia: *</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtNomefantasia" required name="txtNomefantasia">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="txtCnpj">CNPJ: *</label>
+                <div class="col-sm-3">
+                    <input type="numbe" class="form-control cnpj" id="txtCnpj" name="txtCnpj" required>
+                </div>
+
+                <label class="control-label col-sm-2 " for="txtIe">I.E.: * </label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control ie" id="txtIe" name="txtIe" required>
+                </div>
+            </div>
+        </div>
+
+        <div id="fisica" style="display:inline;">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="txtNomePF">Nome: *</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtNomePF" required name="txtNomePF">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="txtCPF">CPF: *</label>
+                <div class="col-sm-3">
+                    <input type="numbe" class="form-control cpf" id="txtCPF" name="txtCPF" required>
+                </div>
+
+                <label class="control-label col-sm-2 " for="txtRG">RG: * </label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control rg" id="txtRG" name="txtRG"
+                        onkeypress="return SomenteNumero(event)" required>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+    <script>
+        function pessoa(tipo) {
+            const fisica = document.getElementById('fisica'); 
+            
+            if (tipo == "F") {
+                document.getElementById("fisica").style.display = "inline";
+                document.getElementById("juridica").style.display = "none";
+            } else if (tipo == "J") {
+                document.getElementById("fisica").style.display = "none";
+                document.getElementById("juridica").style.display = "inline";
+            }
+
+        }
+    </script>
+
+    <script src="./assets/js/validate_cpf.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

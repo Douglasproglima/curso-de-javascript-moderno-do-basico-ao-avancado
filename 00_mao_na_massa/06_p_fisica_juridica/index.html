@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/custom.css?v=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css?v=1.0">
+    
+    <title>Aula 85</title>
+</head>
+<body>
+    <section class="container">
+        <h1>Cadastro de Clientes</h1><hr>
+
+        <!-- CheckBox personalizado -->
+        <!-- <input type="radio" id="box-1" value="F" onclick="pessoa(this.value);" checked>
+        <label for="box-1">Física</label>
+
+        <input type="radio" id="box-2" value="J" onclick="pessoa(this.value);">
+        <label for="box-2">Jurídica</label> -->
+
+        <!-- <label>
+            <input type="checkbox" class="option-input checkbox" checked />
+            Checkbox
+        </label> -->
+        <input type="radio" id="fisico" name="optRadio" value="F" onclick="valid.typePeople(this.value);" checked>
+        <label class="radio-inline col-sm-4">Pessoa Fisica</label>
+
+        <input type="radio" id="juridico" name="optRadio" value="J" onclick="valid.typePeople(this.value);">
+        <label class="radio-inline col-sm-4">Pessoa Juridica</label>
+
+        <form class="register-form" action="" method="POST">
+            <label for="userName">Usuário</label>
+            <input class="userName validate" id="userName" type="text" step="any">
+
+            <div id="fisica" style="display:inline;">
+                <label for="cpf">CPF</label>
+                <input class="cpf validate" id="cpf" type="text" step="any">
+            </div>
+            
+            <div id="juridica" style="display:none;">
+                <label for="cnpj">CNPJ</label>
+                <input class="cnpj validate" id="cnpj" type="text" step="any">
+            </div>
+
+            
+            
+            <label for="pwd">Senha</label>
+            <input class="pwd validate" id="pwd" type="password" step="any">
+            
+            <label for="repeat_pwd">Repetir Senha</label>
+            <input class="repeat_pwd validate" id="repeat_pwd" type="password" step="any">
+
+            <button type="submit">Enviar</button>
+
+            <div class="result"></div>
+        </form>
+    </section>
+
+    <script src="./assets/js/validate_cpf.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
