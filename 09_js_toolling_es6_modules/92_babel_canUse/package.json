@@ -1,0 +1,27 @@
+{
+  "name": "curso-de-javascript-moderno-do-basico-ao-avancado",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "convert-babel": "babel ./assets/js/main.js -o ./bundle.js --presets=@babel/env -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Douglasproglima/curso-de-javascript-moderno-do-basico-ao-avancado.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Douglasproglima/curso-de-javascript-moderno-do-basico-ao-avancado/issues"
+  },
+  "homepage": "https://github.com/Douglasproglima/curso-de-javascript-moderno-do-basico-ao-avancado#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/runtime": "^7.0.0" 
+  }
+}
