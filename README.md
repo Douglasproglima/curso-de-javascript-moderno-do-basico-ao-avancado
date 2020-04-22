@@ -16,11 +16,16 @@
 [![Webpack](./assets/img/webpack-padded-90.png)](https://webpack.github.io/)
 [![Bootstrap](./assets/img/bootstrap-padded-90.png)](http://getbootstrap.com/)
 
-> Curso Web 13 cursos - Javascript React Vue JS Node HTML CSS jQuery Bootstrap 4 Webpack Gulp Banco de Dados e muito mais:
->
-> <https://www.udemy.com/course/curso-de-javascript-moderno-do-basico-ao-avancado/>
+---
+ Curso Web 13 cursos - Javascript React Vue JS Node HTML CSS jQuery Bootstrap 4 Webpack Gulp Banco de Dados e muito mais:
 
-###Algoritmo para validar CPF (ES6)
+ <https://www.udemy.com/course/curso-de-javascript-moderno-do-basico-ao-avancado/>
+ 
+---
+![mapa](./assets/img/maps.png)
+
+### Algoritmo para validar CPF (ES6)
+---
 ````
 class ValidadeCPF {
     constructor(cpf) {
@@ -84,7 +89,8 @@ else
     console.log(`O CPF ${CPF} é inválido.`);
 ````
 
-###Algoritmo para gerar senhas (ES6)
+### Algoritmo para gerar senhas (ES6)
+---
 
 ````
 const rand = (min, max) => Math.floor(Math.random() * (max - min) + min);
@@ -109,12 +115,14 @@ export default function generatePassword(qtdeChar = 5, upperChar, lowerChar, num
 }
 ````
 
-###Aplicações de Exemplo (ES6):
+### Aplicações de Exemplo (ES6)
+---
  
  - Gerador de CPF: http://gerador-cpf-proglima.surge.sh/
  - Gerador de Senha: http://gerador-senha-proglima.surge.sh/
 
 ### Links Úteis de Estudo
+---
  - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript - Documentação do JavaScript <br>
  - https://rocketseat.com.br/starter/curso-gratuito-javascript - Curso Gratuito de JavaScript <br>
  - https://rocketseat.com.br/starter/curso-gratuito-javascript-es6 - Curso Gratuito de ES6+ (JS Moderno) <br>
