@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="shortcut icon" href="./assets/images/favicon.ico">
+    <meta name="Description" content="Author: douglasproglima, Illustrator: Douglasproglima, Category: genarator password">
+    <title>Gerador de Senhas</title>
+</head>
+<body>
+    <section class="container">
+        <h1>Gerador de Senhas</h1>
+        <hr>
+        <div class="paragrafo-result">Selecione as opções</div>
+        <hr>
+        <label for="qtde-chars">Quantidade de Caracteres </label>
+        <input id="qtde-chars" class="qtde-chars" value="20" type="number" step="any" min="1" max="50"></br>
+        
+        <div class="checkbox">  
+            <input id="chk-upper" type="checkbox" class="chk-upper" step="any" checked>
+            <label for="chk-upper">Adicionar maiúsculas</label></br>
+
+            <input id="chk-lower" type="checkbox" class="chk-lower" step="any">
+            <label for="chk-lower">Adicionar minúsculas</label></br>
+
+            <input id="chk-num" type="checkbox" class="chk-num" step="any">
+            <label for="chk-num">Adicionar números</label></br>
+
+            <input id="chk-symbol" type="checkbox" class="chk-symbol" step="any">
+            <label for="chk-symbol">Adicionar símbolos</label></br>
+        </div>
+        
+        <hr><button class="btn-pwd">Gerar Senha</button>
+    </section>
+
+    <script src="./assets/js/bundle.js"></script>
+</body>
+</html>
