@@ -1,0 +1,91 @@
+:root {
+    --indigo: #675aa9;
+    --indigo-houver: #7d6dca;
+    --indigo-active: #605499;
+    --indigo-result: rgb(--indigo, --indigo-houver, --indigo-active);
+    --white: #fff;
+    --success: #10c469;
+    --info: #35b8e0;
+    --warning: #f9c851;
+    --danger: #ff5b5b;
+    --light: #323a46;
+    --dark: #f1f5f7;
+    --purple: #5b69bc;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Roboto",sans-serif;
+    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+
+
+/* https://www.origamid.com/projetos/css-grid-layout-guia-completo/ */
+.grid {
+	display: grid;
+}
+
+.grid {
+	max-width: 400px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+}
+
+.grid-template-columns {
+	grid-template-columns: 200px 200px;
+}
+
+.grid-template-columns-3 {
+	grid-template-columns: 1fr 2fr 1fr;
+}
+
+.subgrid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.subgrid > div {
+	background: rgba(0,0,0,.3);
+}
+
+/* Estilos Gerais */
+.item {
+	margin: 5px;
+	background: var(--indigo);
+	text-align: center;
+	font-size: 1.5em;
+}
+.item:houver {
+  background: var(--indigo-houver);
+}
+
+
+/* Elementos do DOM */
+* {
+    color: var(--dark);
+}
+
+body{
+    display: grid;
+    grid-template-areas: 
+      "header header header"
+      "aside main main"
+      "footer footer footer";
+
+    text-align: center;
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.3em;
+    background-color: #282e38;
+}
+
+body > div {
+	padding: 40px 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 1.25em;
+	font-weight: normal;
+}
