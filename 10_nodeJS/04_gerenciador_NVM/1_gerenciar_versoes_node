@@ -1,0 +1,18 @@
+OBS: Usar o powershel em modo admin
+
+Instalar o NVM para Windows: https://github.com/coreybutler/nvm-windows/releases
+
+Após instar o NVM será possivel instalar diferentes versões do NODE:
+
+    nvm install node@14.0.0
+    nvm install node@12.16.2
+
+Lista das versões do node instalado:
+    nvm List
+
+Escolher uma versão do NODE
+    nvm use 14.0.0
+
+
+Mais informações:
+    https://github.com/nvm-sh/nvm#install--update-script
