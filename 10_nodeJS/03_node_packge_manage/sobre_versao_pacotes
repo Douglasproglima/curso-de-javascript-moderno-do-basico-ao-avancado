@@ -1,0 +1,45 @@
+Exemplo:
+
+^  Quando se usa esse sinal, irá atualizar a "Minor e Path".
+~  Quando se usa esse sinal, irá atualizar apenas o "Path"
+.x Irá utilizar a última versão Major => npm i express@4.x (pacote@Numero.X)
+-E Não irá add o ^ para versões superiores
+
+Node Version ^2.1.0 (Major.Minor.Path)
+
+2. - Major: Qubra compatibilidade com as versões anteriores.
+
+1. - Minor: Cria recursos novos mas não cria impacto nas aplicações que usam versões anteriores
+
+0 - Path: Correções de Bug's
+
+Comandos:
+    Instalar:
+        npm i name_packge
+        npm install name_packge
+        npm install name_packge
+        npm install name_packge@version --save-dev
+        npm install name_packge@version --save-prod
+        npm install name_packge@version -E
+
+
+    Atualizar:
+        npm name_packge update
+    
+    Desinstalar:
+        npm uninstall name_packge
+
+    Listar as dependências
+        npm ls
+    
+    Listar dependências especificas
+        npm ls --depth=0
+    
+    Listar uma dependência especifica
+        npm ls --depth=1
+
+    Listar pacotes desatualizados
+        npm outdated
+
+    
+
