@@ -18,9 +18,8 @@ function upperCaseFirstCaracter1(str){
 function upperCaseFirstCaracter2(str){
 
     let words = str.split(' ').map(word => {
-        let firstLetter = word.slice(0, 1); //Corta uma parte do array
+        let firstLetter = word.slice(0, 1).toUpperCase(); //Corta uma parte do array
         let rest = word.slice(1); //Não foi passado o segundo parametro, nesse caso pega até o final
-        firstLetter = firstLetter.toUpperCase();
 
         return `${firstLetter}${rest}`;
     });
