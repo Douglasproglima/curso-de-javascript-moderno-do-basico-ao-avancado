@@ -1,18 +1,26 @@
-function counterLetters(str) {
-    const arrayStr = [...str];
-    let letters = '';
-    let count = 1;
-    for(let i = 0; i < arrayStr.length; i++) {
-        if(arrayStr[i] == arrayStr[i + 1]) count++;
-        else{
-            const vlr = `${count}${arrayStr[i]}`;
-            console.log([...letters, vlr]);
-            count = 1;
-        }
+function difDiagonal(matriz) {
+    let diag1 = 0;
+    let diag2 = 0;
+
+    for(let i = 0; i < matriz.length; i++) {
+        diag1 += matriz[i][i];
+        diag2 += matriz[i][(matriz.length - 1) - i];
     }
 
-    //console.log(arrayStr);
+    const result = diag1 - diag2;
+    console.log(`${diag1} - ${diag2} = ${Math.abs(result)}`);
 }
 
-counterLetters('wwwweeeqq');
-//counterLetters('ppprrrrtt');
+difDiagonal([
+    [1, 5, 7, 1],    
+    [3, 10, 3, 2,],    
+    [2, 3, 5, 3],  
+    [2, 3, 5, 3]  
+]);
+
+/*
+Somar as diagonais e calcular a diferença entre elas
+firstDiag = 1 + 10 + 5 = 16
+secondDiag = 7 + 10 + 2 = 19
+result = 19 - 16 = 3
+*/
