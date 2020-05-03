@@ -1,0 +1,33 @@
+<%- include('includes/head'); %>
+<body>
+    <section class="container">
+        <h1>
+            <!-- <%= h1 %></br></br>Não executa nada -->
+            <!-- <%- h1 %>Executa JS, CSS -->
+            <% if(h1 === 'Titulo Definido no <span style="color: red;">HomeController</span>') { %>
+                <%= 'IF' %>
+            <% } else { %>
+                <%= h1 %>
+            <% } %>
+
+        </h1>
+        <hr>
+        <h2><%= varLocalMiddleware  %></h2>
+        <hr>
+            <label for="numbers">Array Number</label>
+            <select name="numbers" id="numbers" size="2" style="width: 75%;">
+                <% numbers.forEach( num => { %>
+                    <option style="width: 80%; color: black;" value=""><%= num %></option></br>
+                <%}); %>
+            </select>
+        <hr>
+        <form action="/" method="POST">
+            <!-- Add o token de segurança referente csrfToken() -< Middleware -->
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="empresa" type="text">
+            <button>Enviar</button>
+        </form>
+        <hr>
+    </section>
+<%- include('includes/footer'); %>
