@@ -12,9 +12,10 @@ exports.middlewareSecond = (request, response, next) => {
 
 /* MIDDLEWARES CSURF E HEMELT */
 exports.validateCsrfError = (err, request, response, next) => {
-    if(err && err.code === 'EBADCSRFTOKEN') {
-        return response.render('../views/404/index'); //Criar uma página 404
+    if(err) {
+        return response.render('404'); //Criar uma página 404
     }
+    next();
 }
 
 exports.csrfMiddleware = (request, response, next) => {

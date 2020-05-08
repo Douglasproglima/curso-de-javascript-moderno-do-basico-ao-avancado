@@ -1,3 +1,10 @@
+:root {
+  --primary-color: #d177e0;
+  --second-color: #ee98fb;
+  --menu-houver: #883997;
+  --sub-menu-item: #eeeeee;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -10,7 +17,7 @@ body {
 
 .page {
   height: 100%;
-  background-color: #F37272;
+  background-color: var(--primary-color);
 }
 
 .content {
@@ -21,7 +28,7 @@ body {
   transition: -webkit-transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
   transition: transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
   transition: transform 0.7s cubic-bezier(1, 0.005, 0.24, 1), -webkit-transform 0.7s cubic-bezier(1, 0.005, 0.24, 1);
-  background-color: #eeeeee;
+  background-color: var(--sub-menu-item);
 }
 
 .content_inner {
@@ -40,14 +47,14 @@ body {
   cursor: pointer;
   width: 100px;
   height: 80px;
-  background-color: #F37272;
+  background-color: var(--primary-color);
   border-bottom-right-radius: 100%;
 }
 .menu_toggle:active i {
   opacity: 0.8;
 }
 .menu_toggle i {
-  color: #f0f0f0;
+  color: var(--sub-menu-item);
 }
 .menu_toggle .menu_open,
 .menu_toggle .menu_close {
@@ -101,7 +108,7 @@ body {
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #eeeeee;
+  color: var(--sub-menu-item);
   -webkit-transition: color .2s;
   transition: color .2s;
 }
@@ -109,7 +116,7 @@ body {
   position: relative;
   display: inline-block;
   margin-right: 25px;
-  color: #f0f0f0;
+  color: var(--sub-menu-item);
 }
 .menu_items a .icon:after {
   position: absolute;
@@ -127,13 +134,13 @@ body {
   transition: border-color .2s;
 }
 .menu_items a:hover {
-  color: #eeeeee;
+  color: var(--menu-houver);
 }
 .menu_items a:hover .icon:after {
-  border-color: #F37272;
+  border-color: var(--menu-houver);
 }
 .menu_items a:active .icon {
-  color: #F37272;
+  color: var(--primary-color);
 }
 
 /* Let's open up the menu */
