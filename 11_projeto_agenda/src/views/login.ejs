@@ -83,8 +83,8 @@
 
         .login-html .sign-in,
         .login-html .sign-up,
-        .login-form .group .check .frm-sign-in .frm-sign-up {
-            display: none;
+        .login-form .group .check{
+            display:none;
         }
 
         .login-html .tab,
@@ -124,7 +124,7 @@
         .login-form .group .input,
         .login-form .group .button {
             width: 100%;
-            color: #fff;
+            color: rgb(12, 12, 12);
             display: block;
         }
 
@@ -243,23 +243,23 @@
 
             <div class="login-form">
 
-                <form class="frm-sign-in" action="/login/register" method="POST">
+                <form class="frm-sign-in" action="/login/login" method="POST">
                     <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                     <div class="sign-in-htm">
                         <div class="group">
                             <label for="user" class="label">Usuário</label>
-                            <input id="user" type="text" class="input">
+                            <input id="user" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Senha</label>
-                            <input id="pass" type="password" class="input" data-type="password">
+                            <input id="pass" type="password" class="input" data-type="password" required>
                         </div>
                         <div class="group">
                             <input id="check" type="checkbox" class="check" checked>
                             <label for="check"><span class="icon"></span> Manter me Conectado</label>
                         </div>
                         <div class="group">
-                            <input type="submit" class="button" value="Sign In">
+                            <input type="submit" class="button" value="Entrar">
                         </div>
                         <div class="hr"></div>
                         <div class="foot-lnk">
@@ -268,10 +268,14 @@
                     </div>
                 </form>
     
-                <form class="frm-sign-up" action="/login/login" method="POST">
+                <form class="frm-sign-up" action="/login/register" method="POST">
                     <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                 
                     <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="email" class="label">E-mail</label>
+                            <input id="email" type="email" class="input">
+                        </div>
                         <div class="group">
                             <label for="user" class="label">Usuário</label>
                             <input id="user" type="text" class="input">
@@ -285,11 +289,7 @@
                             <input id="pass" type="password" class="input" data-type="password">
                         </div>
                         <div class="group">
-                            <label for="pass" class="label">E-mail</label>
-                            <input id="pass" type="text" class="input">
-                        </div>
-                        <div class="group">
-                            <input type="submit" class="button" value="Sign Up">
+                            <input type="submit" class="button" value="Cadastrar">
                         </div>
                         <div class="hr"></div>
                         <div class="foot-lnk">
