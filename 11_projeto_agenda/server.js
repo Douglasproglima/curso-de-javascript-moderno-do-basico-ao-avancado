@@ -19,7 +19,7 @@ mongoose.connect(process.env.CONNECTION_STRING, {
 //********************Session********************/
 const session = require('express-session'); //Indentifica o navegador do cliente e salva um coockie
 const MongoStore = require('connect-mongo')(session); //Sessões serão salvar na base de dados
-const flashMessage = require('connect-flash'); //Mensagens auto destrutivas - Lê e apaga
+const flash = require('connect-flash'); //Mensagens auto destrutivas - Lê e apaga
 const routes = require('./routes'); //Define o diretório onde estão as rotas do app
 const path = require('path'); //para trabalhar com caminhos
 
@@ -50,7 +50,7 @@ const sessionOptions = session({
 });
 
 app.use(sessionOptions);
-app.use(flashMessage());
+app.use(flash());
 
 
 app.set('views', path.resolve(__dirname, 'src', 'views')); //Caminhos dos arquivos HTML
