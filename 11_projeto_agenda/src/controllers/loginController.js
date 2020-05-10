@@ -30,7 +30,7 @@ exports.register = async function(req, res) {
     }
 };
 
-exports.login = (req, res) => {
+exports.login = (req, res) => { 
     const login = new Login(req.body);
     res.send(login.body);
     //return; //Garante que não irá utilizar nenhum middlare

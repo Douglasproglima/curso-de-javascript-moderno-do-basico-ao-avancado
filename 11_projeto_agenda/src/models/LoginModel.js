@@ -29,23 +29,19 @@ class Login {
 
     valida() {
         this.cleanUp();
-
         if(!validator.isEmail(this.body.email)) 
             this.errors.push('E-mail inválido');
 
         if(this.body.password.length < 6 || this.body.password.length > 20) 
             this.errors.push('A senha precisa conter de 6 há 20 caracteres');
         
-        /*
-        if(this.body.password_repeat.length < 8 || this.body.password_repeat.length > 20) 
-            this.errors.push('A senha precisa conter de 8 há 20 caracteres');*/
+        if(this.body.password_repeat.length < 6 || this.body.password_repeat.length > 20) 
+            this.errors.push('A senha precisa conter de 8 há 20 caracteres');
     }
 
     cleanUp() {
-        for(const key in this.body) {
-            if(typeof this.body[key] !== 'string'){ //Fields in the body
-                this.body[key] = '';
-            }
+        for(let key in this.body) {
+            if(typeof this.body[key] !== 'string') this.body[key] = ''; //Fields in the body
         }
 
         this.body = {

@@ -246,7 +246,7 @@
 
             <div class="login-form">
 
-                <form class="frm-sign-in" action="/login/login" method="POST">
+                <form class="frm-sign-in" action="/home" method="POST">
                     <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                     <div class="sign-in-htm">
                         <div class="group">
@@ -276,7 +276,7 @@
                     <div class="sign-up-htm">
                         <div class="group">
                             <label for="email" class="label">E-mail</label>
-                            <input id="email" type="email" class="input">
+                            <input id="email" name="email" type="email" class="input">
                         </div>
                         <div class="group">
                             <label for="password" class="label">Senha</label>
