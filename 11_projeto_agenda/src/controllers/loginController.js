@@ -2,14 +2,14 @@
 const Login = require('../models/LoginModel');
 
 exports.index = (req, res) => {
-    res.render('login');
+    if(req.session.user) return res.render('login-logado');
+    return res.render('login');
     //return; //Garante que não irá utilizar nenhum middlare
 };
 
 exports.register = async function(req, res) {
-    const login = new Login(req.body);
-    
     try {
+        const login = new Login(req.body);
         await login.register();
 
         if(login.errors.length > 0) {
@@ -21,6 +21,30 @@ exports.register = async function(req, res) {
         }
         
         req.flash('success', 'Seu usuário foi criado com sucesso.');
+        req.session.save(() => res.redirect('back'));
+        return;
+    } catch (e) {
+        console.log(e);
+        return res.render('404');
+    }
+};
+
+exports.login = async function(req, res) {
+    console.log(res.body);
+    try {
+        const login = new Login(req.body);
+        await login.loginValidate();
+
+        if(login.errors.length > 0) {
+            req.flash('errors', login.errors);
+            req.session.save(function() {
+                return res.redirect('back');
+            });
+            return;
+        }
+        
+        req.flash('success', 'Autenticação realizada com sucesso.');
+        req.session.user = login.user;
         req.session.save(function() {
             return res.redirect('back');
         });
@@ -30,8 +54,7 @@ exports.register = async function(req, res) {
     }
 };
 
-exports.login = (req, res) => { 
-    const login = new Login(req.body);
-    res.send(login.body);
-    //return; //Garante que não irá utilizar nenhum middlare
-};
+exports.logout = function(req, res) {
+    req.session.destroy();
+    res.redirect('/login/index');
+}
