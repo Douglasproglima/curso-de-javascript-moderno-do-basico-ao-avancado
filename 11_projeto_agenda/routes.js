@@ -1,5 +1,6 @@
 const express = require('express');
 const route = express.Router();
+
 const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
 const agendaController = require('./src/controllers/agendaController');
@@ -18,18 +19,8 @@ route.get('/login/logout', loginController.logout);
 
 // Rotas da home
 route.get('/home', homeController.index);
-route.post('/home', homeController.index);
+//route.post('/home', homeController.index);
 
-// Rotas Agenda
-route.get('/agenda', agendaController.index);
-route.post('/agenda/register', agendaController.register);
-
-//Rotas Contato
-route.get('/contact', contactController.index);
-route.post('/contact/register', contactController.register);
-route.get('/contact/:id', contactController.editIndex);
-
-/*
 // Rotas Agenda
 route.get('/agenda', loginRequiredMiddleware, agendaController.index);
 route.post('/agenda/register', loginRequiredMiddleware, agendaController.register);
@@ -37,7 +28,6 @@ route.post('/agenda/register', loginRequiredMiddleware, agendaController.registe
 //Rotas Contato
 route.get('/contact', loginRequiredMiddleware, contactController.index);
 route.post('/contact/register', loginRequiredMiddleware, contactController.register);
-*/
-
+route.get('/contact/:id', loginRequiredMiddleware, contactController.editIndex);
 
 module.exports = route;

@@ -1,30 +1,31 @@
-exports.middlewareGlobal = (request, response, next) => {
-    response.locals.errors = request.flash('errors'); 
-    response.locals.success = request.flash('success'); 
-    response.locals.user = request.session.user;
-    next();
+exports.middlewareGlobal = (req, res, next) => {
+  res.locals.errors = req.flash("errors");
+  res.locals.success = req.flash("success");
+  res.locals.user = req.session.user;
+  next();
 };
 
-exports.loginRequiredMiddleware = (request, response, next) => {
-    if(!request.session.user) {
-        request.flash('errors', 'Necessário fazer login');
-        request.session.save(() => response.redirect('/home'));
-        return;
-    }
-    next();
+exports.othersMiddleware = (req, res, next) => {
+  next();
 };
 
-exports.middlewareSecond = (request, response, next) => {
-    next();
+exports.validateCsrfError = (err, req, res, next) => {
+  if (err) return res.render("404"); //Criar uma página 404
+  next();
 };
 
 /* MIDDLEWARES CSURF E HEMELT */
-exports.validateCsrfError = (err, request, response, next) => {
-    if(err) return response.render('404'); //Criar uma página 404
-    next();
+exports.csrfMiddleware = (req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
 };
 
-exports.csrfMiddleware = (request, response, next) => {
-    response.locals.csrfToken  = request.csrfToken();
-    next();
+exports.loginRequiredMiddleware = (req, res, next) => {
+  if (!req.session.user) {
+    req.flash("errors", "Você precisa fazer login.");
+    req.session.save(() => res.redirect("/"));
+    return;
+  }
+
+  next();
 };

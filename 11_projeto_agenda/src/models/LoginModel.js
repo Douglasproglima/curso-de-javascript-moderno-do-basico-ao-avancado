@@ -16,11 +16,10 @@ class Login {
         this.user = null;
     }
     
-    async loginValidate() {
+    async login() {
         this.validate();
         if(this.errors.length > 0) return;
-        
-        this.user = await LoginModel.findOne( { email: this.body.email } );
+        this.user = await LoginModel.findOne({ email: this.body.email });
 
         if(!this.user) {
             this.errors.push('E-mail não encontrado.');
@@ -35,13 +34,10 @@ class Login {
     }
 
     async register() {
-        console.log('01 - Register Login Model - valida()');
         this.validate();
         if(this.errors.length > 0) return;
         
-        console.log('02 - Register Login Model - userExists()');
         await this.userExists();
-        console.log('03 - Register Login Model - userExists()');
         if(this.errors.length > 0) return;
         
         const salt = bcryptjs.genSaltSync();
@@ -52,31 +48,32 @@ class Login {
     }
     
     async userExists() {
-        console.log('01 - Naka userExists');
         //Retorna o usuário ou null
-        this.user = await LoginModel.findOne( { email: this.body.email } );
-        if(this.user) 
-            this.errors.push('E-mail já existe. Clique em "Esqueceu a Senha", caso tenha esquecido.');
+        this.user = await LoginModel.findOne({ email: this.body.email });
+        if(this.user) this.errors.push('E-mail já existe. Clique em "Esqueceu a Senha", caso tenha esquecido.');
     }
 
     validate() {
         this.cleanUp();
-        if(!validator.isEmail(this.body.email)) 
-            this.errors.push('E-mail inválido');
-
-        if(this.body.password.length < 6 || this.body.password.length > 20) 
-            this.errors.push('A senha precisa conter de 6 há 20 caracteres');
         
+        if(!validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');
+        
+        if(this.body.password.length < 6 || this.body.password.length > 20) 
+        this.errors.push('A senha precisa conter de 6 há 20 caracteres');
+        
+        /*
         if(this.body.password_repeat.length < 6 || this.body.password_repeat.length > 20) 
             this.errors.push('A senha precisa conter de 8 há 20 caracteres');
 
         if(this.body.password_repeat !== this.body.password)
-            this.errors.push('Senha diferente, informe a mesma senha em ambos os campos.');
+            this.errors.push('Senha diferente, informe a mesma senha em ambos os campos.');*/
     }
 
     cleanUp() {
-        for(let key in this.body) {
-            if(typeof this.body[key] !== 'string') this.body[key] = ''; //Fields in the body
+        for(const key in this.body) {
+            if(typeof this.body[key] !== 'string') {
+                this.body[key] = '';
+            }
         }
 
         this.body = {

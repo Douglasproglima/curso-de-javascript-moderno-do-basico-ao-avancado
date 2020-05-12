@@ -9,7 +9,8 @@ const app = express();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.CONNECTION_STRING, { 
     useNewUrlParser: true, 
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false
   }) 
   .then(() => {
     app.emit('Great');
@@ -29,13 +30,14 @@ const helmet = require('helmet'); //Deixa o app mais seguro, ele trabalha no cab
 const csurf = require('csurf'); //São tokens para os formulários, previne ataques de CSRF
 
 //********************MIDDLEWARE********************/
-const { middlewareGlobal, middlewareSecond, validateCsrfError, csrfMiddleware } = 
-require('./src/middlewares/middleware'); //middleware: Funções executadas nas rotas (No meio das rotas)
+const { middlewareGlobal, validateCsrfError, csrfMiddleware } = require('./src/middlewares/middleware'); //middleware: Funções executadas nas rotas (No meio das rotas)
 
 app.use(helmet());
+
 app.use(express.urlencoded({ extended: true })); //Possibilidade postar form's dentro do app
 app.use(express.json()); //Possibilita o parse de JSON dentro do app
 app.use(express.static(path.resolve(__dirname, 'public'))); //Define os arquivos estáticos do app. img, js, css
+
 
 //********************Configuração da Session********************/
 const sessionOptions = session({
@@ -52,20 +54,20 @@ const sessionOptions = session({
 app.use(sessionOptions);
 app.use(flash());
 
-
 app.set('views', path.resolve(__dirname, 'src', 'views')); //Caminhos dos arquivos HTML
 app.set('view engine', 'ejs'); //Define a engine que irá reinderizar o HTML, abaixo todas as engines
                               //https://expressjs.com/en/resources/template-engines.html
 
-//********************Meus middlewares********************/
+//********************Chamada dos Middlewares********************//
 //Middlewares do CSURF
 app.use(csurf());  //Configura o csrf
+
+app.use(middlewareGlobal);
+
+//********************Meus middlewares********************/
+
 app.use(validateCsrfError); //Redireciona o erro para page 404
 app.use(csrfMiddleware); //Insere o token em todas as páginas
-
-//********************Chamada dos Middlewares********************//
-app.use(middlewareGlobal); 
-app.use(middlewareSecond);
 
 //********************Chamada das Rotas********************//
 app.use(routes);
