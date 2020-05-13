@@ -10,7 +10,6 @@ const ContactSchema = new mongoose.Schema({
 });
 
 const ContactModel = mongoose.model('Contact', ContactSchema);
-//module.exports = ContactModel;
 
 function Contact(body) {
     this.body = body;
@@ -19,7 +18,7 @@ function Contact(body) {
 }
 
 Contact.getById = async function(id) {
-    if(!typeof id !== 'string') return;
+    if(typeof id !== 'string') return;
     const contact = await ContactModel.findById(id);
     return contact;
 }

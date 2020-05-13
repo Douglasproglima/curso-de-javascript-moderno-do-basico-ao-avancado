@@ -18,6 +18,7 @@ exports.register = async (req, res) => {
         }
         
         req.flash('success', 'Contato registrado com sucesso.');
+        //req.session.save(() => res.redirect('/contact'));
         req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
         return;
     } catch (error) {
@@ -32,5 +33,5 @@ exports.editIndex = async function(req, res) {
     const contact = await Contact.getById(req.params.id);
     if(!contact) return res.render('404');
 
-    res.render('contact', { contact: contact });
+    res.render('contact', { contact });
 };

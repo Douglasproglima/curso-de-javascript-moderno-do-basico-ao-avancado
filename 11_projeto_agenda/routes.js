@@ -11,14 +11,16 @@ const { loginRequiredMiddleware } = require('./src/middlewares/middleware');
 
 
 //Rotas de Login
-route.get('/', loginController.index);
+route.get('/', (req, res) => {
+    res.redirect('/login/index');
+});
 route.get('/login/index', loginController.index);
 route.post('/login/register', loginController.register);
 route.post('/login/login', loginController.login);
 route.get('/login/logout', loginController.logout);
 
 // Rotas da home
-route.get('/home', homeController.index);
+route.get('/home', loginRequiredMiddleware, homeController.index);
 //route.post('/home', homeController.index);
 
 // Rotas Agenda
