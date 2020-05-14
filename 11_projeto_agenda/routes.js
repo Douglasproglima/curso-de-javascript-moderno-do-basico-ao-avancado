@@ -31,5 +31,6 @@ route.post('/agenda/register', loginRequiredMiddleware, agendaController.registe
 route.get('/contact', loginRequiredMiddleware, contactController.index);
 route.post('/contact/register', loginRequiredMiddleware, contactController.register);
 route.get('/contact/:id', loginRequiredMiddleware, contactController.editIndex);
+route.post('/contact/edit/:id', loginRequiredMiddleware, contactController.edit);
 
 module.exports = route;

@@ -18,7 +18,6 @@ exports.register = async (req, res) => {
         }
         
         req.flash('success', 'Contato registrado com sucesso.');
-        //req.session.save(() => res.redirect('/contact'));
         req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
         return;
     } catch (error) {
@@ -34,4 +33,26 @@ exports.editIndex = async function(req, res) {
     if(!contact) return res.render('404');
 
     res.render('contact', { contact });
+};
+
+exports.edit = async function(req, res) {
+    try {
+        if(!req.params.id) return res.render('404');
+        const contact = new Contact(req.body);
+        await contact.edit(req.params.id);
+        
+        if(contact.errors.length > 0) {
+            req.flash('errors', contact.errors);
+            req.session.save(() => res.redirect('back')); //Back -> Redireciona para page anterior
+            return;
+        }
+        
+        req.flash('success', 'Contato alterado com sucesso.');
+        req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
+        return;    
+    } catch (error) {
+        console.log(e);
+        return res.render('404');
+    }
+
 };
