@@ -9,7 +9,12 @@
             <p class="text-center lead">Agenda/Contatos</p>
 
             <%- include('includes/messages') %>
-
+            
+            <% if(contacts.length > 0) { %>
+                <canvas id="myChart" width="400" height="100" style="background: #37673c52;"></canvas>
+                <hr>
+                <canvas id="myChart2" class="chartjs-render-monitor" width="400" height="100" style="background: #37673c52;"></canvas>
+            <% }%>  
         </div>
 
         <div class="col-lg-3">

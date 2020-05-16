@@ -1,4 +1,6 @@
-exports.index = (req, res) => {
-  res.render('index');
-  return; //Garante que não irá utilizar nenhum middlare
+const Contact = require('../models/ContactModel');
+
+ exports.index  = async (req, res) => {
+  const contacts = await Contact.getContacts();
+  res.render('index', { contacts });
 };

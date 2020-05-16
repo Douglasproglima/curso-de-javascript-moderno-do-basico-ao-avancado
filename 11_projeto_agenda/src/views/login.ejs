@@ -2,15 +2,16 @@
 <html lang="pt-BR">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
-    <meta name="Description" content="Author: douglasproglima, Illustrator: Douglasproglima, Category: agenda">
-    <meta charset="utf-8" />
-    <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </meta>
-
+    <meta name="Description" content="Author: douglasproglima, Illustrator: douglasproglima, Category: ES6">
+    <meta charset="utf-8" />
+    <meta content="douglasproglima, Douglas Lima, リマ, リマドウグラス" name="keywords">
+    <meta content="Full Stack Developer at Okazaki - 岡崎市" name="description">
+    <meta http-equiv="Content-Language" content="pt-br">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="index, follow">
+    <meta name="google-site-verification" content="GeujA1Og033_qKUv-9UwUfbaYRpGMKU0NSs8T1wxVaY" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -228,6 +229,7 @@
             text-align: center;
         }
     </style>
+
     <!-- for ios 7 style, multi-resolution icon of 152x152 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
@@ -237,11 +239,16 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <title>Login</title>
+    <!-- =======================================================
+       Nome do Tema: ProgLimaThemes
+       Dev Email: douglasproglima@gmail.com
+       Dev: Douglas Lima
+       License: https://bootstrapmade.com/license/
+     ======================================================= -->      
 </head>
 
 <body>
-
-    <div class="login-wrap">
+    <div class="login-wrap my-5">
         <div class="login-html">
 
             <%- include('includes/messages'); %>
@@ -272,13 +279,13 @@
                         <div class="group">
                             <input type="submit" class="button" value="Entrar">
                         </div>
-                        <div class="hr"></div>
                         <div class="foot-lnk">
-                            <a href="/login/reset">Esqueceu a Senha?</a>
+                            <a class="isAccount" href="/login/reset">Esqueceu a Senha?</a>
                         </div>
+                        <div class="hr"></div>
                     </div>
                 </form>
-    
+
                 <form class="frm-sign-up" action="/login/register" method="POST">
                     <input type="hidden" name="_csrf" value=<%= csrfToken %>>
                     <div class="sign-up-htm">
@@ -297,17 +304,23 @@
                         <div class="group">
                             <input type="submit" class="button" value="Cadastrar">
                         </div>
-                        <div class="hr"></div>
                         <div class="foot-lnk">
                             <label class="isAccount" for="tab-1">Já Possui Conta?</a>
                         </div>
+                        <div class="hr"></div>
                     </div>
                 </form>
-
             </div>
+
+            
         </div>
     </div>
-
+    
+    <nav class="navbar fixed-bottom" >
+        <p style="color: antiquewhite; margin-top: auto; text-align: center;" class="copyright">&copy; Copyright <strong><a href="https://github.com/Douglasproglima.com/">Douglas Lima</a></strong>. All Rights Reserved</p>
+        
+    </nav>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -321,6 +334,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 
+    <!-- Google  -->
+    <script src="/assets/js/google.min.js"></script>
+    <script src="/assets/js/randomColors.js"></script>
     <script src="/assets/js/bundle.js"></script>
 </body>
 
