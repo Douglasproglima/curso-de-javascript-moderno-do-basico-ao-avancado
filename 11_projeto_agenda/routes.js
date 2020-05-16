@@ -25,7 +25,8 @@ route.get('/home', loginRequiredMiddleware, homeController.index);
 
 // Rotas Agenda
 route.get('/agenda', loginRequiredMiddleware, agendaController.index);
-route.post('/agenda/register', loginRequiredMiddleware, agendaController.register);
+route.get('/agenda/:id', loginRequiredMiddleware, contactController.editIndex);
+route.get('/agenda/delete/:id', loginRequiredMiddleware, contactController.delete);
 
 //Rotas Contato
 route.get('/contact', loginRequiredMiddleware, contactController.index);

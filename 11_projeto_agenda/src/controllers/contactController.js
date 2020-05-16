@@ -18,7 +18,8 @@ exports.register = async (req, res) => {
         }
         
         req.flash('success', 'Contato registrado com sucesso.');
-        req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
+        //req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
+        req.session.save(() => res.redirect(`/agenda`)); //Back -> Redireciona para page anterior
         return;
     } catch (error) {
         console.log(e);
@@ -48,11 +49,22 @@ exports.edit = async function(req, res) {
         }
         
         req.flash('success', 'Contato alterado com sucesso.');
-        req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
+        //req.session.save(() => res.redirect(`/contact/${contact.contact._id}`)); //Back -> Redireciona para page anterior
+        req.session.save(() => res.redirect(`/agenda`)); //Back -> Redireciona para page anterior
         return;    
     } catch (error) {
         console.log(e);
         return res.render('404');
     }
+};
 
+exports.delete = async function(req, res) {
+    if(!req.params.id) return res.render('404');
+
+    const contact = await Contact.delete(req.params.id);
+    if(!contact) return res.render('404');
+
+    req.flash('success', 'Registro removido com sucesso');
+    req.session.save(() => res.redirect(`/agenda`));
+    return;
 };

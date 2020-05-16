@@ -17,14 +17,11 @@ class Login {
     }
     
     async login() {
-        console.log('LoginModel login - 01');
         this.validate();
-        console.log('LoginModel login - 02');
         if(this.errors.length > 0) return;
         
         this.user = await LoginModel.findOne({ email: this.body.email });
         
-        console.log('LoginModel login - 03 ' + this.user);
         if(!this.user) {
             this.errors.push('E-mail não encontrado.');
             return;
@@ -74,7 +71,6 @@ class Login {
     }
 
     cleanUp() {
-        console.log('LoginModel cleanUp - 01');
         for(const key in this.body) {
             if(typeof this.body[key] !== 'string') {
                 this.body[key] = '';

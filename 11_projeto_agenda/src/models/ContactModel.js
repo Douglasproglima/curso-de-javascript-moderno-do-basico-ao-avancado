@@ -17,12 +17,6 @@ function Contact(body) {
     this.contact = null;
 }
 
-Contact.getById = async function(id) {
-    if(typeof id !== 'string') return;
-    const contact = await ContactModel.findById(id);
-    return contact;
-}
-
 Contact.prototype.register = async function() {
     this.validate();
     if(this.errors.length > 0) return;
@@ -57,5 +51,39 @@ Contact.prototype.edit = async function(id) {
     
     this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true });
 };
+
+/* MÉTODOS ESTÁTICOS - Não vão para o Prototype */
+Contact.getById = async function(id) {
+    if(typeof id !== 'string') return;
+    const contact = await ContactModel.findById(id);
+    return contact;
+};
+
+Contact.getContacts = async function() {
+    const contacts = await ContactModel.find().sort( { create_date: -1 } );
+    return contacts;
+};
+
+Contact.delete = async function(id) {
+    if(typeof id !== 'string') return;
+    const contact = await ContactModel.findOneAndDelete( { _id: id } );
+    return contact;
+};
+
+Contact.formatPhoneNumber = function(str) {
+    let cleaned = ('' + str).replace(/\D/g, '');
+  
+  //Check if the input is of correct
+  let match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/);
+  
+  if (match) {
+    //Remove the matched extension code
+    //Change this to format for any country code.
+    let intlCode = (match[1] ? '+1 ' : '')
+    return [intlCode, '(', match[2], ') ', match[3], '-', match[4]].join('')
+  }
+  
+  return null;
+}
 
 module.exports = Contact;

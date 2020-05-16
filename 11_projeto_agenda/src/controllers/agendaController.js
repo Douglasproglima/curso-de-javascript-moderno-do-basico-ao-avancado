@@ -1,7 +1,6 @@
-exports.index = (req, res) => {
-    res.render('agenda');
-};
+const Contact = require('../models/ContactModel');
 
-exports.register = (req, res) => {
-    res.send('Agenda Controller Register');
+exports.index = async (req, res) => {
+    const contacts = await Contact.getContacts();
+    res.render('agenda', { contacts });
 };

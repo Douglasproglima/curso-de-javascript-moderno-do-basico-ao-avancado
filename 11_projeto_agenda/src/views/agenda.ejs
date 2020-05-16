@@ -4,90 +4,45 @@
     <div class="content_inner">
         <div class="col-lg-3"></div>
 
-        <div class="md-lg-8 my-3">
+        <div class="md-lg-8 my-4">
             <h1 class="text-center">Agenda</h1>
-            <p class="text-center lead">Seus contatos estão abaixo</p>
+            
+            <% if(contacts.length <= 0) { %>
+                <p class="text-center lead">Nenhum registro encontrado.</p>
+            <% } else { %>
+                <p class="text-center lead">Seus contatos estão abaixo</p>
+                <%- include('includes/messages') %>
+                <div class="responsive-table">
+                    <table id="table_agenda" class="table table-striped table-hover" cellspacing="0" width="100%">
+                        <tr class="thead-dark">
+                            <th class="th-sm">Nome</th>
+                            <th class="th-sm">Sobrenome</th>
+                            <th class="th-sm">E-mail</th>
+                            <th class="th-sm">Telefone</th>
+                            <th class="th-sm"></th>
+                        </tr>
 
-            <%- include('includes/messages') %>
-
-            <div class="responsive table">
-                <table class="table my-3">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th>Telefone</th>
-                        <th>E-mail</th>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-
-                    <tr>
-                        <td>Luiz</td>
-                        <td>Otávio</td>
-                        <td>37 9888 9865</td>
-                        <td>taobio@mirando.com</td>
-                    </tr>
-                </table>
-            </div>
+                        <% contacts.forEach(contact => { %>
+                            <tr>
+                                <td><%= contact.name %></td>
+                                <td><%= contact.lastName %></td>
+                                <td><%= contact.email %></td>
+                                <td><%= contact.phoneNumber %></td>
+                                <td>
+                                    <a href="/agenda/<%= contact._id %>" class="btn btn-info btn-sm btn-rounded"><i class="fa fa-edit"></i></a>
+                                    <a href="/agenda/delete/<%= contact._id %>" class="btn btn-danger btn-sm btn-rounded"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr> 
+                        <% }); %>
+                    </table>
+                </div>
+            <% } %>
 
         </div>
 
         <div class="col-lg-3">
         </div>
     </div>
-</main>       
+</main>
+
 <%- include('includes/footer') %>
