@@ -5,6 +5,11 @@ exports.index = (req, res) => {
   return res.render("login");
 };
 
+exports.reset = (req, res) => {
+  console.log('TESTE');
+  return res.render('login-reset-pass');
+};
+
 exports.register = async function (req, res) {
   try {
     const login = new Login(req.body);
@@ -49,6 +54,28 @@ exports.login = async function (req, res) {
   } catch (e) {
     console.log(e);
     return res.render("404");
+  }
+};
+
+exports.edit = async function(req, res) {
+  console.log('EDIT LOGICONTROLLER');
+  try {
+      if(!req.params.id) return res.render('404');
+      const user = new Login(req.body);
+      await user.edit(req.params.email);
+      
+      if(user.errors.length > 0) {
+          req.flash('errors', contact.errors);
+          req.session.save(() => res.redirect('back')); //Back -> Redireciona para page anterior
+          return;
+      }
+      
+      req.flash('success', 'A senha foi resetada para 123456.');
+      req.session.save(() => res.redirect(`/`)); //Back -> Redireciona para page anterior
+      return;    
+  } catch (error) {
+      console.log(e);
+      return res.render('404');
   }
 };
 

@@ -85,4 +85,26 @@ class Login {
     }
 }
 
+
+async function edit(email) {
+    console.log('Edit Login');
+}
+    /*
+if(typeof email !== 'string') return;
+    this.validate();
+    if(this.errors.length > 0) return;
+    
+    this.user = await LoginModel.findOne({ email: this.body.email });
+        
+    if(!this.user) {
+        this.errors.push('E-mail não encontrado.');
+        return;
+    }
+
+    this.user = await LoginModel.findByIdAndUpdate(email, this.body.password = '123456', { new: true });    
+    
+
+}
+*/
+
 module.exports = Login;
