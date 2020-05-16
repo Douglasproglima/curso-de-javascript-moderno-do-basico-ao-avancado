@@ -17,6 +17,8 @@ route.get('/', (req, res) => {
 route.get('/login/index', loginController.index);
 route.post('/login/register', loginController.register);
 route.post('/login/login', loginController.login);
+route.post('/login/edit/:id', loginRequiredMiddleware, loginController.edit);
+route.get('/login/reset', loginRequiredMiddleware, loginController.reset);
 route.get('/login/logout', loginController.logout);
 
 // Rotas da home
