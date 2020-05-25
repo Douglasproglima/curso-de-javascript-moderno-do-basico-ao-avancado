@@ -1,26 +1,19 @@
-function difDiagonal(matriz) {
-    let diag1 = 0;
-    let diag2 = 0;
-
-    for(let i = 0; i < matriz.length; i++) {
-        diag1 += matriz[i][i];
-        diag2 += matriz[i][(matriz.length - 1) - i];
-    }
-
-    const result = diag1 - diag2;
-    console.log(`${diag1} - ${diag2} = ${Math.abs(result)}`);
+function validadeSumMaxNumbers(arr){
+    const arrOrder = arr.sort((n1, n2) => n1 - n2);
+    const arrBck = [...arrOrder];
+    const maxNumber = arrOrder.pop();
+    const total = arrBck.reduce((acu, vlr) => acu += vlr ); 
+    
+    return total === maxNumber         
+        ? `A soma é maior ou igual: Soma: ${total} | Maior Número: ${maxNumber}`
+        : `A soma não é maior ou igual: Soma: ${total} | Maior Número: ${maxNumber}`;
 }
 
-difDiagonal([
-    [1, 5, 7, 1],    
-    [3, 10, 3, 2,],    
-    [2, 3, 5, 3],  
-    [2, 3, 5, 3]  
-]);
-
-/*
-Somar as diagonais e calcular a diferença entre elas
-firstDiag = 1 + 10 + 5 = 16
-secondDiag = 7 + 10 + 2 = 19
-result = 19 - 16 = 3
-*/
+//const array1 = [1, 2, 3, 5 , 11];
+const array2 = [1, 4, 5, 20, 278, 8, 20, 32, 21, 32, 55, 36, 32, 12];
+//const array3 = [1, 4, 5, 20, 8, 20, 32, 21, 32, 55, 209, 11];
+//const array4 = [1, 4, 5, 20, 8];
+//console.log(validadeSumMaxNumbers(array1));
+console.log(validadeSumMaxNumbers(array2));
+//console.log(validadeSumMaxNumbers(array3));
+//console.log(validadeSumMaxNumbers(array4));
