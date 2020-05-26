@@ -15,9 +15,22 @@ export default class Main  extends Component {
     index: -1,
   };
 
-  handleSumit = (event, index) => {
-    event.preventDefault();
+  //Salva as tarefas no localStorage
+  componentDidMount() {
+    const tasks = JSON.parse(localStorage.getItem('MyTasks'));
+    if(!tasks) return;
+    this.setState({ tasks });
+  }
+
+  componentDidUpdate(prevPropos, prevState) {
     const { tasks } = this.state;
+    if(tasks === prevState.tasks) return;
+     localStorage.setItem('MyTasks', JSON.stringify(tasks));
+  }
+
+  handleSumit = (event) => {
+    event.preventDefault();
+    const { tasks, index } = this.state;
     let { newTask } = this.state;
     newTask = newTask.trim();
 
