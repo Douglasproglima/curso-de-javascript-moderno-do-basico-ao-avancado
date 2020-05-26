@@ -79,14 +79,15 @@ form button:active {
 }
 
 .tasks {
-  margin-top: 30px;
+  margin-top: 2px;
+  padding-left: 0px;
 }
 
 .tasks li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
   transition: all 600ms;
 }
 
@@ -108,4 +109,9 @@ form button:active {
 .tasks li .delete {
   cursor: pointer;
   transition: all 600ms;
+}
+
+.tasks li span {
+  display: flex;
+  align-items: center;
 }

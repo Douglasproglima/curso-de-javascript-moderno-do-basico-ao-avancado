@@ -11,33 +11,43 @@ import './Main.css';
 export default class Main  extends Component {
   state = {
     newTask: '',
-    taks: [
-      'Tomar Remédio',
-      'Fazer Café',
-      'Beber Café',
-      'Revisar Anki',
-      'DuoLingo',
-      'Ir p/ o trampo'
-    ]
+    tasks: []
   };
+
+  handleSumit = (event) => {
+    event.preventDefault();
+    const { tasks } = this.state;
+    let { newTask } = this.state;
+    newTask = newTask.trim();
+
+    if(tasks.indexOf(newTask) !== -1) return; //Diferente de -1 não existe
+
+    const newsTasks = [...tasks]; //Copy do state
+
+    this.setState({
+      tasks: [...newsTasks, newTask],
+    });
+  }
 
   handleInputChange = (event) =>  {
     this.setState({
       newTask: event.target.value,
     });
   }
+
   render() {
-    const { newTask, taks } = this.state;
+    const { newTask, tasks } = this.state;
     return (
       <div className="main">
         <h2>Lista de Tarefas</h2>
         <hr></hr>
 
-        <form action="#">
+        <form onSubmit={this.handleSumit} action="#">
           <input
             onChange={this.handleInputChange}
             type="text"
             value={newTask}
+            maxLength="34"
             />
           <button type="submit">
             <FaPlus />
@@ -45,13 +55,13 @@ export default class Main  extends Component {
           <hr></hr>
 
           <ul className="tasks">
-            {taks.map((task, key) => (
+            {tasks.map((task, key) => (
               <li key={key}>
                 {task}
-                <div>
+                <span>
                   <FaEdit className="edit" />
                   <FaWindowClose className="delete" />
-                </div>
+                </span>
               </li>
             ))}
           </ul>
