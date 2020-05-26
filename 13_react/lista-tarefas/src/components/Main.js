@@ -31,8 +31,22 @@ export default class Main  extends Component {
 
   handleInputChange = (event) =>  {
     this.setState({
-      newTask: event.target.value,
+      newTask: event.target.value.toUpperCase(),
     });
+  }
+
+  handleDelete = (event, index) => {
+    const { tasks } = this.state;
+    const newsTasks = [...tasks];
+    newsTasks.splice(index, 1);
+
+    this.setState({
+      tasks: [...newsTasks],
+    });
+  }
+
+  handleEdit = (event, index) => {
+    console.log('Update', index);
   }
 
   render() {
@@ -55,12 +69,20 @@ export default class Main  extends Component {
           <hr></hr>
 
           <ul className="tasks">
-            {tasks.map((task, key) => (
-              <li key={key}>
+            {tasks.map((task, index) => (
+              <li key={index}>
                 {task}
                 <span>
-                  <FaEdit className="edit" />
-                  <FaWindowClose className="delete" />
+                  <FaEdit
+                    onClick={ (e) => this.handleEdit(e, index)}
+                    className="edit"
+                  />
+
+                  <FaWindowClose
+                    onClick={(e) => this.handleDelete(e, index)}
+                    className="delete"
+
+                  />
                 </span>
               </li>
             ))}
