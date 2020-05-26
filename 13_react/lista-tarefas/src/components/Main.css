@@ -77,3 +77,35 @@ form button:hover {
 form button:active {
   background: var(--indigo-active);
 }
+
+.tasks {
+  margin-top: 30px;
+}
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  transition: all 600ms;
+}
+
+.tasks li:hover {
+  background: var(--indigo-houver);
+}
+
+.tasks li .edit {
+  margin-right: 5px;
+  color: var(--success);
+}
+
+.tasks li .delete {
+  margin-right: 5px;
+  color: var(--danger);
+}
+
+.tasks li .edit,
+.tasks li .delete {
+  cursor: pointer;
+  transition: all 600ms;
+}
