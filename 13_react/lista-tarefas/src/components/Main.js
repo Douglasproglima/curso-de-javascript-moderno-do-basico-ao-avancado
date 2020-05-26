@@ -11,10 +11,11 @@ import './Main.css';
 export default class Main  extends Component {
   state = {
     newTask: '',
-    tasks: []
+    tasks: [],
+    index: -1,
   };
 
-  handleSumit = (event) => {
+  handleSumit = (event, index) => {
     event.preventDefault();
     const { tasks } = this.state;
     let { newTask } = this.state;
@@ -24,9 +25,18 @@ export default class Main  extends Component {
 
     const newsTasks = [...tasks]; //Copy do state
 
-    this.setState({
-      tasks: [...newsTasks, newTask],
-    });
+    if(index === -1) {
+      this.setState({
+        tasks: [...newsTasks, newTask],
+        newTask: '',
+      });
+    } else {
+      newsTasks[index] = newTask;
+      this.setState({
+        tasks: [...newsTasks],
+        index: -1,
+      });
+    }
   }
 
   handleInputChange = (event) =>  {
@@ -46,7 +56,11 @@ export default class Main  extends Component {
   }
 
   handleEdit = (event, index) => {
-    console.log('Update', index);
+    const { tasks } = this.state;
+    this.setState({
+      index,
+      newTask: tasks[index],
+    });
   }
 
   render() {
