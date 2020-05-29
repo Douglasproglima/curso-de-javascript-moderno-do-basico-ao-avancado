@@ -1,4 +1,19 @@
 import Styled, { createGlobalStyle } from 'styled-components';
+import {
+  backgroudBody,
+  indigo,
+  indigoHouver,
+  indigoActive,
+  indigoResult,
+  white,
+  light,
+  dark,
+  purple,
+  success,
+  info,
+  error,
+  warning,
+} from '../config/colors';
 
 export default createGlobalStyle`
   :root {
@@ -29,7 +44,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
-    color: var(--dark);
+    color: ${dark};
   }
 
   html, body, #root {
@@ -44,9 +59,9 @@ export default createGlobalStyle`
     font-size: 1.3em;
     font-weight: 400;
     line-height: 1.5em;
-    background-color: #282e38;
-    background: #282e38;
-    color: var(--dark);
+    background-color: ${backgroudBody};
+    background: ${backgroudBody};
+    color: ${dark};
   }
 
   h1 {
@@ -62,7 +77,7 @@ export default createGlobalStyle`
   hr {
     margin: 20px 0;
     border: 2px;
-    border-top: 3px solid var(--indigo);
+    border-top: 3px solid ${indigo};
   }
 
   a {
@@ -91,17 +106,17 @@ export default createGlobalStyle`
   }
 
   li:hover {
-    background: var(--indigo-houver);
+    background: ${indigoHouver};
   }
 
   li .edit {
     margin-right: 5px;
-    color: var(--success);
+    color: ${success};
   }
 
   li .delete {
     margin-right: 5px;
-    color: var(--danger);
+    color: ${error};
   }
 
   li .edit, li .delete {
@@ -120,7 +135,7 @@ export default createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 2px solid var(--indigo-active);
+    border: 2px solid ${indigoActive};
     margin-top: 20px;
   }
 
@@ -130,13 +145,13 @@ export default createGlobalStyle`
   }
 
   tr:nth-child(even) {
-    background-color: var(--indigo-active);
+    background-color: ${indigoActive};
   }
 `;
 
 export const Container = Styled.section`
   max-width: 360px;
-  background: #fff;
+  background: ${white};
   margin: 30px auto;
   padding: 30px;
 `;
