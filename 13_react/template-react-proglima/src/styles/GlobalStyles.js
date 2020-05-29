@@ -4,15 +4,10 @@ import {
   indigo,
   indigoHouver,
   indigoActive,
-  indigoResult,
   white,
-  light,
   dark,
-  purple,
   success,
-  info,
   error,
-  warning,
 } from '../config/colors';
 
 export default createGlobalStyle`
