@@ -4,35 +4,14 @@ import {
   indigo,
   indigoHouver,
   indigoActive,
-  white,
+  backgroudForm,
+  boderShadown,
   dark,
   success,
   error,
 } from '../config/colors';
 
 export default createGlobalStyle`
-  :root {
-    --indigo: #675aa9;
-    --indigo-houver: #7d6dca;
-    --indigo-active: #605499;
-    --indigo-result: rgb(--indigo, --indigo-houver, --indigo-active);
-    --white: #fff;
-    --success: #10c469;
-    --info: #35b8e0;
-    --warning: #f9c851;
-    --danger: #ff5b5b;
-    --light: #323a46;
-    --dark: #1c1f24;
-    --white: #f1f5f7;
-    --purple: #5b69bc;
-    --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --font-family-sans-serif: "Roboto",sans-serif;
-    --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
-  };
 
   * {
     margin:0;
@@ -60,6 +39,7 @@ export default createGlobalStyle`
   }
 
   h1 {
+  margin-top: 15px;
   text-transform: uppercase;
   text-align: center;
   }
@@ -145,8 +125,13 @@ export default createGlobalStyle`
 `;
 
 export const Container = Styled.section`
-  max-width: 360px;
-  background: ${white};
-  margin: 30px auto;
+  max-width: 640px;
+  margin: 50px auto;
+  border-radius: 15px;
+  background: ${backgroudForm};
+  box-sizing: border-box;
+  box-shadow: 0em 0rem 5rem ${boderShadown};
+  border: 3px solid ${indigoHouver};
   padding: 30px;
+  text-align: center;
 `;

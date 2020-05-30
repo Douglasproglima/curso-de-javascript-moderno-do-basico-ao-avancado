@@ -7,6 +7,8 @@ export const white = '#f1f5f7';
 export const light = '#323a46';
 export const dark = '#1c1f24';
 export const purple = '#5b69bc';
+export const backgroudForm = '#323a46';
+export const boderShadown = '#546072';
 
 export const success = '#10c469';
 export const info = '#35b8e0';
