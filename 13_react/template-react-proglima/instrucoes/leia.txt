@@ -1,13 +1,27 @@
 Instalar o Eslinte Prettier e configurar o EditorConfig do VSCode
 -----------------------------------------------------------------
 
-npm i eslint babel-eslint prettier eslint-config-prettier eslint-plugin-prettier -D
+//Padrão de sintaxe e sintaxe do ES6
+  npm i eslint babel-eslint prettier eslint-config-prettier eslint-plugin-prettier -D
 
-npx eslint --init
+//Inicia a configuracao do ESlint no projeto
+  npx eslint --init
+  https://medium.com/cwi-software/eslint-prettier-a-dupla-perfeita-para-produtividade-e-padroniza%C3%A7%C3%A3o-de-c%C3%B3digo-6a7730cfa358
 
-https://medium.com/cwi-software/eslint-prettier-a-dupla-perfeita-para-produtividade-e-padroniza%C3%A7%C3%A3o-de-c%C3%B3digo-6a7730cfa358
+//Bibliote de ícones
+  npm i react-icons
 
+//Style-Components (Reactjs/React-Native)
+//Estilização de components de css através do js.
+  //extensão para ter acesso hightlight do auto-complete
+  1 - Instalar a extensão do VSCode vscode-styled-components
 
-npm i react-icons
+  //pacote do styled components
+  2 - npm i vscode-styled-components
 
-npm i react-router-dom
+//Faz o roteamento das rotas da aplicação, quando o user clicar em alguma coisa
+//direciona para uma um endereço X ou Y
+  npm i react-router-dom
+
+//Redirecionar as páginas
+  npm i history
