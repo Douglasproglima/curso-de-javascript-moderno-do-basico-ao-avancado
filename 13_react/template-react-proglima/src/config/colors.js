@@ -11,6 +11,6 @@ export const backgroudForm = '#323a46';
 export const boderShadown = '#546072';
 
 export const success = '#10c469';
-export const info = '#35b8e0';
-export const error = '#F2AF29';
+export const info = '#4fc3f7';
+export const error = '#ff6e40';
 export const warning = '#f9c851';

@@ -28,3 +28,6 @@ Instalar o Eslinte Prettier e configurar o EditorConfig do VSCode
 
 //Prop-Types
   npm i prop-types
+
+//React Toastify -> Comunicação de msg com o user.
+  npm i --save react-toastify

@@ -1,16 +1,7 @@
 import Styled, { createGlobalStyle } from 'styled-components';
-import {
-  backgroudBody,
-  indigo,
-  indigoHouver,
-  indigoActive,
-  backgroudForm,
-  boderShadown,
-  white,
-  dark,
-  success,
-  error,
-} from '../config/colors';
+import * as colors from '../config/colors';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
 
@@ -19,7 +10,7 @@ export default createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
-    color: ${dark};
+    color: ${colors.dark};
   }
 
   html, body, #root {
@@ -30,13 +21,14 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     text-align: left;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.3em;
     font-weight: 400;
     line-height: 1.5em;
-    background-color: ${backgroudBody};
-    background: ${backgroudBody};
-    color: ${dark};
+    background-color: ${colors.backgroudBody};
+    background: ${colors.backgroudBody};
+    color: ${colors.dark};
   }
 
   h1 {
@@ -53,7 +45,7 @@ export default createGlobalStyle`
   hr {
     margin: 20px 0;
     border: 2px;
-    border-top: 3px solid ${indigo};
+    border-top: 3px solid ${colors.indigo};
   }
 
   a {
@@ -82,17 +74,17 @@ export default createGlobalStyle`
   }
 
   li:hover {
-    background: ${indigoHouver};
+    background: ${colors.indigoHouver};
   }
 
   li .edit {
     margin-right: 5px;
-    color: ${success};
+    color: ${colors.success};
   }
 
   li .delete {
     margin-right: 5px;
-    color: ${error};
+    color: ${colors.error};
   }
 
   li .edit, li .delete {
@@ -111,7 +103,7 @@ export default createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 2px solid ${indigoActive};
+    border: 2px solid ${colors.indigoActive};
     margin-top: 20px;
   }
 
@@ -121,7 +113,24 @@ export default createGlobalStyle`
   }
 
   tr:nth-child(even) {
-    background-color: ${indigoActive};
+    background-color: ${colors.indigoActive};
+  }
+
+  ${'' /* Altera as cores padrão das msgs do Toastify */}
+  body .Toastify .Toastify__toast-container .Toastify__toast--success {
+    background: ${colors.success}
+  }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast--info {
+    background: ${colors.info}
+  }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast--warning {
+    background: ${colors.warning}
+  }
+
+  body .Toastify .Toastify__toast-container .Toastify__toast--error {
+    background: ${colors.error}
   }
 `;
 
@@ -129,11 +138,11 @@ export const Container = Styled.section`
   max-width: 640px;
   margin: 50px auto;
   border-radius: 15px;
-  background: ${backgroudForm};
+  background: ${colors.backgroudForm};
   box-sizing: border-box;
-  box-shadow: 0em 0rem 5rem ${boderShadown};
-  border: 3px solid ${indigoHouver};
+  box-shadow: 0em 0rem 5rem ${colors.boderShadown};
+  border: 3px solid ${colors.indigoHouver};
   padding: 30px;
   text-align: center;
-  colors: ${white};
+  colors: ${colors.white};
 `;
