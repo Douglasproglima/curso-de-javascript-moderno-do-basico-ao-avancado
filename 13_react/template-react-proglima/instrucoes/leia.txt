@@ -25,3 +25,6 @@ Instalar o Eslinte Prettier e configurar o EditorConfig do VSCode
 
 //Redirecionar as páginas
   npm i history
+
+//Prop-Types
+  npm i prop-types

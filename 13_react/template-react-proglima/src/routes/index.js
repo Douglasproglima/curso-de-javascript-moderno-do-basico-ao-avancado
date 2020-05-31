@@ -1,14 +1,17 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
+import PrivateRoute from './PrivateRoute';
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 
 export default function Routes() {
   return (
     <Switch>
-      <Route exact path="/" component={Login} />
-      <Route path="*" component={Page404} />
+      {/* isClosed define que a rota está fechada para o acesso externo  */}
+      {/* <MyRoute exact path="/" component={Login} isClosed /> */}
+      <PrivateRoute exact path="/" component={Login} />
+      <PrivateRoute path="*" component={Page404} />
     </Switch>
   );
 }
