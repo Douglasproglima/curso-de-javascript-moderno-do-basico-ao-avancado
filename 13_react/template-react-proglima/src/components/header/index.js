@@ -1,21 +1,25 @@
 import React from 'react';
-import { AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineHome, AiOutlineLogin } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { FiSettings } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import { Nav } from './styled';
 
 export default function Header() {
   return (
     <Nav>
-      <a href="#qunit-tests">
+      <Link to="/">
         <AiOutlineHome size={35} />
-      </a>
-      <a href="#qunit-tests">
-        <FaRegUserCircle size={32} style={{ color: '#fff' }} />
-      </a>
-      <a href="#qunit-tests">
-        <FiSettings size={32} style={{ color: '#fff' }} />
-      </a>
+      </Link>
+      <Link to="/user">
+        <FaRegUserCircle size={32} />
+      </Link>
+      <Link to="/setting">
+        <FiSettings size={32} />
+      </Link>
+      <Link to="/login">
+        <AiOutlineLogin size={32} />
+      </Link>
     </Nav>
   );
 }

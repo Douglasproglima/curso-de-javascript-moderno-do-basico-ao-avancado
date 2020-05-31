@@ -6,6 +6,7 @@ import {
   indigoActive,
   backgroudForm,
   boderShadown,
+  white,
   dark,
   success,
   error,
@@ -134,4 +135,5 @@ export const Container = Styled.section`
   border: 3px solid ${indigoHouver};
   padding: 30px;
   text-align: center;
+  colors: ${white};
 `;
