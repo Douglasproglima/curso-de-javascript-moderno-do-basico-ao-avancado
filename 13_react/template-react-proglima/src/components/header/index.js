@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux';
 import { Nav } from './styled';
 
 export default function Header() {
-  const pessoaFisicaJuridica = useSelector((state) => state.isFisicaJuridica);
+  const pessoaFisicaJuridica = useSelector(
+    (state) => state.newNameReducerAlias.isFisicaJuridica
+  );
 
   return (
     <Nav>

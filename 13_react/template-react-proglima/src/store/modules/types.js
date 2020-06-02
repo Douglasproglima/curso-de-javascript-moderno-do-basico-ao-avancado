@@ -1,0 +1,1 @@
+export const FISICA_JURIDICA = 'FISICA_JURIDICA';
