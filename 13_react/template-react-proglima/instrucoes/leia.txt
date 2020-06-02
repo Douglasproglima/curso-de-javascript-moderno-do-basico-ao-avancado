@@ -37,7 +37,7 @@ npm i axios
 
 //Redux - Configurar o estado global do app
 **********************CICLO DE VIDA**********************
--> Estado Inicial: {  
+-> Estado Inicial: {
   user_logado> false //Aqui já é sera global em todo app
 }
 
@@ -45,3 +45,9 @@ npm i axios
   acao -> reducer -> newState = state -> newState
 
 npm i redux react-redux
+
+
+//REDUX SAGA -> Usado para fazer requisições asyncronas junto com o Redux Normal
+  Action (Request) -> saga -> reducer -> Retornar: sucess ou fail
+
+  npm i redux-saga

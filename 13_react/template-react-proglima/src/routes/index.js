@@ -7,10 +7,12 @@ import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 
 export default function Routes() {
+  /*
   toast.success('Mensagem de Sucesso');
   toast.info('Mensagem de Informação');
   toast.warning('Mensagem de Aviso');
   toast.error('Mensagem de Erro');
+  */
 
   return (
     <Switch>

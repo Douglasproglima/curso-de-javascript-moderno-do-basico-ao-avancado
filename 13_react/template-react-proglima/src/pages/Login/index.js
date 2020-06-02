@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { Title, Paragrafo } from './styled';
@@ -23,7 +23,16 @@ export default function Login() {
     e.preventDefault();
 
     dispatch(exampleActions.isFisicaJuridica());
+    dispatch(exampleActions.btnClickedRequest());
+    dispatch(exampleActions.btnClickedSucess());
+    dispatch(exampleActions.btnClickedFail());
   }
+
+  const selectors = useSelector(
+    (state) => state.newNameReducerAlias.btnClickedRequest,
+    (state) => state.newNameReducerAlias.btnClickedSuccess,
+    (state) => state.newNameReducerAlias.btnClickedFail
+  );
 
   return (
     <Container>
@@ -31,7 +40,7 @@ export default function Login() {
         Login
         <hr />
         <br />
-        <small>TESTE</small>
+        <small>{selectors ? 'Success' : ''}</small>
       </Title>
       <Paragrafo>Douglas Lima.</Paragrafo>
       <button type="button" onClick={handleClick}>

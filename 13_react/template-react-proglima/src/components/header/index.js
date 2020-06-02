@@ -8,7 +8,10 @@ import { Nav } from './styled';
 
 export default function Header() {
   const pessoaFisicaJuridica = useSelector(
-    (state) => state.newNameReducerAlias.isFisicaJuridica
+    (state) => state.newNameReducerAlias.isFisicaJuridica,
+    (state) => state.newNameReducerAlias.btnClickedRequest,
+    (state) => state.newNameReducerAlias.btnClickedSuccess,
+    (state) => state.newNameReducerAlias.btnClickedFail
   );
 
   return (
