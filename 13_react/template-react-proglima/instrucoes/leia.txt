@@ -34,3 +34,14 @@ Instalar o Eslinte Prettier e configurar o EditorConfig do VSCode
 
 //Axios -> para fazer requisições via https
 npm i axios
+
+//Redux - Configurar o estado global do app
+**********************CICLO DE VIDA**********************
+-> Estado Inicial: {  
+  user_logado> false //Aqui já é sera global em todo app
+}
+
+-> para alterar o estado o user_logado
+  acao -> reducer -> newState = state -> newState
+
+npm i redux react-redux

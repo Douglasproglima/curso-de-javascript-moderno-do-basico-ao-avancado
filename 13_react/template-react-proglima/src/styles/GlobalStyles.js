@@ -52,12 +52,35 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
-  button {
+  .button_small {
     cursor: pointer;
     width: 10%;
     height: 43px;
     margin-top: 10px;
   }
+
+button {
+  cursor: pointer;
+  width: 100%;
+  height: 43px;
+  margin-top: 10px;
+  border: none;
+  background: ${colors.indigo};
+  color: ${colors.white};
+  font-size: 18px;
+  font-weight: 700;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+button:hover {
+  background: ${colors.indigoHouver};
+}
+
+button:active {
+  background: ${colors.indigoActive};
+}
 
   ul {
     list-style: none;
