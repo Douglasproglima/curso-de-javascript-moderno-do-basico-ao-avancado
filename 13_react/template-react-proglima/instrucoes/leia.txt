@@ -51,3 +51,9 @@ npm i redux react-redux
   Action (Request) -> saga -> reducer -> Retornar: sucess ou fail
 
   npm i redux-saga
+
+//REDUX PERSIST -> Usado para salvar estados do app ou persistir os dados
+//(Ao inves de implementar na mao para salvar a sessao ou outra coisa no localStorage
+   vc usa esse camarada)
+
+npm i redux-persist
