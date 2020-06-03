@@ -3,23 +3,15 @@ import { AiOutlineHome, AiOutlineLogin } from 'react-icons/ai';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { FiSettings } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { Nav } from './styled';
 
 export default function Header() {
-  const pessoaFisicaJuridica = useSelector(
-    (state) => state.newNameReducerAlias.isFisicaJuridica,
-    (state) => state.newNameReducerAlias.btnClickedRequest,
-    (state) => state.newNameReducerAlias.btnClickedSuccess,
-    (state) => state.newNameReducerAlias.btnClickedFail
-  );
-
   return (
     <Nav>
       <Link to="/">
         <AiOutlineHome size={35} />
       </Link>
-      <Link to="/user">
+      <Link to="/register">
         <FaRegUserCircle size={32} />
       </Link>
       <Link to="/setting">
@@ -28,7 +20,6 @@ export default function Header() {
       <Link to="/login">
         <AiOutlineLogin size={32} />
       </Link>
-      {pessoaFisicaJuridica ? 'Física' : 'Jurídica'}
     </Nav>
   );
 }
