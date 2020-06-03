@@ -10,7 +10,7 @@ export const Title = styled.h1`
 `;
 
 export const Paragrafo = styled.p`
-  font-size: 48px;
+  font-size: 18px;
   color: #605499;
   padding: 10px;
 `;

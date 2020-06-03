@@ -37,12 +37,12 @@ export default function Login() {
   return (
     <Container>
       <Title isRed={false}>
-        Login
+        Title
         <hr />
         <br />
         <small>{selectors ? 'Success' : ''}</small>
       </Title>
-      <Paragrafo>Douglas Lima.</Paragrafo>
+      <Paragrafo>React Base (pages/login/index).</Paragrafo>
       <button type="button" onClick={handleClick}>
         Enviar
       </button>
