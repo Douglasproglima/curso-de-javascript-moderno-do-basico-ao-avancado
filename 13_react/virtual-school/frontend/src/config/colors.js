@@ -3,6 +3,7 @@ export const indigo = '#675aa9';
 export const indigoHouver = '#7d6dca';
 export const indigoActive = '#605499';
 export const indigoResult = `rgb('${indigo}', '${indigoHouver}', '${indigoActive}')`;
+export const gray = '#ffffffcc';
 export const white = '#f1f5f7';
 export const light = '#323a46';
 export const dark = '#1c1f24';

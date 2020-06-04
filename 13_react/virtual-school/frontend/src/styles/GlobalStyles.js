@@ -10,7 +10,6 @@ export default createGlobalStyle`
     padding: 0;
     outline: none;
     box-sizing: border-box;
-    color: ${colors.dark};
   }
 
   html, body, #root {
@@ -26,20 +25,20 @@ export default createGlobalStyle`
     font-size: 1.3em;
     font-weight: 400;
     line-height: 1.5em;
-    background-color: ${colors.backgroudBody};
     background: ${colors.backgroudBody};
-    color: ${colors.dark};
+    color: ${colors.gray};
   }
 
   h1 {
-  margin-top: 15px;
-  text-transform: uppercase;
-  text-align: center;
+    margin-top: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    color: ${colors.gray};
   }
 
   h2 {
-    text-transform: uppercase;
-    text-align: center;
+    text-align: left;
+    color: ${colors.gray};
   }
 
   hr {
@@ -47,6 +46,8 @@ export default createGlobalStyle`
     border: 2px;
     border-top: 3px solid ${colors.indigo};
   }
+
+
 
   a {
     text-decoration: none;
@@ -162,10 +163,10 @@ export const Container = Styled.section`
   margin: 50px auto;
   border-radius: 15px;
   background: ${colors.backgroudForm};
+  colors: ${colors.white};
   box-sizing: border-box;
   box-shadow: 0em 0rem 5rem ${colors.boderShadown};
   border: 3px solid ${colors.indigoHouver};
   padding: 30px;
   text-align: center;
-  colors: ${colors.white};
 `;

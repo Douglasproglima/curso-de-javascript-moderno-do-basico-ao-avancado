@@ -1,19 +1,26 @@
 import styled from 'styled-components';
-import { white, indigoHouver } from '../../config/colors';
+import * as colors from '../../config/colors';
 
 export const Nav = styled.nav`
-  background: ${indigoHouver};
+  background: ${colors.indigoHouver};
+  color: ${colors.dark};
   padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   a {
-    color: ${white};
+    color: ${colors.dark};
+    /* color: ${colors.white}; */
     margin: 0 10px 0;
   }
 
   a:hover {
-    color: ${indigoHouver};
+    color: ${colors.white};
   }
+
+  a:active {
+    color: ${colors.gray};
+  }
+
 `;
