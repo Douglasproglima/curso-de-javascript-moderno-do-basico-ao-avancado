@@ -4,9 +4,9 @@ import { persistReducer } from 'redux-persist';
 export default (reducers) => {
   const persistedReducers = persistReducer(
     {
-      key: 'NOME-DO-APP',
+      key: 'VIRTUAL-SCHOOL',
       storage,
-      whitelist: ['newNameReducerAlias'], // Chave definada dentro do rootReducer no export default
+      whitelist: ['auth'],
     },
     reducers
   );
