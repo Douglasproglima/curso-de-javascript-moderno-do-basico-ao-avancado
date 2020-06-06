@@ -47,17 +47,8 @@ export default createGlobalStyle`
     border-top: 3px solid ${colors.indigo};
   }
 
-
-
   a {
     text-decoration: none;
-  }
-
-  .button_small {
-    cursor: pointer;
-    width: 10%;
-    height: 43px;
-    margin-top: 10px;
   }
 
 button {
@@ -73,10 +64,12 @@ button {
   height: 40px;
   cursor: pointer;
   margin-top: 25px;
+  transition: all 300ms;
 }
 
 button:hover {
   background: ${colors.indigoHouver};
+  ${'' /* filter: brightness(85%); */}
 }
 
 button:active {
