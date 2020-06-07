@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 
 import PrivateRoute from './PrivateRoute';
 import Student from '../pages/Student';

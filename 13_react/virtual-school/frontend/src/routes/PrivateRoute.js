@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import { useSelector } from 'react-redux';
 export default function PrivateRoute({
   component: Component,
   isClosed,
   ...restProperties
 }) {
-  const isLoggeIn = false; // Vai estar presente dentro do estado do Redux
+  const isLoggeIn = useSelector(state =>  state.auth.isLoggeIn); // Vai estar presente dentro do estado do Redux
 
   if (isClosed && !isLoggeIn) {
     return (
@@ -21,7 +21,7 @@ export default function PrivateRoute({
   }
 
   // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Route {...restProperties} component={Component} />;
+  return <Route { ...restProperties } component={Component} />;
 }
 
 // Define o vlr padrão

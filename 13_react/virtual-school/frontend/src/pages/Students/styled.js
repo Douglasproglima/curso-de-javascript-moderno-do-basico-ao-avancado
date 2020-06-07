@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as colors from '../../config/colors';
 
-export const StudentContainer = styled.p`
+export const StudentContainer = styled.div`
   margin-top: 20px;
 
   a {

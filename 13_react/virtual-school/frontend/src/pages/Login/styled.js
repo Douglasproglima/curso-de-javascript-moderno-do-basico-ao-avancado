@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import * as colors from '../../config/colors';
 
-export const Form = styled.p`
+export const Form = styled.form`
   form, input, label {
       display: block;
       width: 100%;

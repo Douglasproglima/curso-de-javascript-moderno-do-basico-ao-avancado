@@ -8,20 +8,29 @@ const initialState = {
 };
 
 // Reducer -> Responsavel por escutar as ações sendo disparada e dependendo da ação disparada ele irá executar outra ação
-export default function reducer(state = initialState, action) {
-  switch (action.type) {
-    case types.LOGIN_REQUEST: {
-      console.log('REDUCER', action.payload)
-      return state;
-    }
+export default function(state = initialState, action) {
+  //Seta os dados do header e coloca os dados no state
 
+  switch (action.type) {
     case types.LOGIN_SUCCESS: {
-      return state;
+      const newState = { ...state };
+      newState.isLoggedIn = true;
+      newState.token = action.payload.token;
+      newState.user = action.payload.user;
+      newState.isLoading = false;
+
+      return newState;
     }
 
     case types.LOGIN_FAILURE: {
-      console.log('Reducer Success');
-      return state;
+      const newState = { ...initialState};
+      return newState;
+    }
+
+    case types.LOGIN_REQUEST: {
+      const newState = { ...state};
+      newState.isLoading =  true;
+      return newState;
     }
 
     default:

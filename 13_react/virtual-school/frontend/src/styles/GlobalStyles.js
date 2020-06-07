@@ -51,30 +51,30 @@ export default createGlobalStyle`
     text-decoration: none;
   }
 
-button {
-  cursor: pointer;
-  width: 100%;
-  height: 43px;
-  margin-top: 10px;
-  border: none;
-  background: ${colors.indigo};
-  color: ${colors.white};
-  font-size: 18px;
-  font-weight: 700;
-  height: 40px;
-  cursor: pointer;
-  margin-top: 25px;
-  transition: all 300ms;
-}
+  button {
+    cursor: pointer;
+    width: 100%;
+    height: 43px;
+    margin-top: 10px;
+    border: none;
+    background: ${colors.indigo};
+    color: ${colors.white};
+    font-size: 18px;
+    font-weight: 700;
+    height: 40px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: all 300ms;
+  }
 
-button:hover {
-  background: ${colors.indigoHouver};
-  ${'' /* filter: brightness(85%); */}
-}
+  button:hover {
+    background: ${colors.indigoHouver};
+    ${'' /* filter: brightness(85%); */}
+  }
 
-button:active {
-  background: ${colors.indigoActive};
-}
+  button:active {
+    background: ${colors.indigoActive};
+  }
 
   ul {
     list-style: none;
