@@ -1,24 +1,43 @@
-import styled from 'styled-components';
+import styled, { keyframes } from "styled-components";
+
+const rotate360 = keyframes`
+  position: absolute;
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const Container = styled.div`
+  animation: ${rotate360} 1s linear infinite;
+  transform: translateZ(0);
+
+  border-top: 6px solid #7d6dca;
+  border-right: 6px solid #7d6dca;
+  border-bottom: 6px solid #7d6dca;
+  border-left: 8px solid #b8b3d2;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  top: 35%;
+  left: 45%;
   z-index: 1;
+  padding: 5%;
   display: flex;
   align-items: center;
   align-content: center;
-  color: #fff;
-  font-size: 30px;
 
   div {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.8);
+    background: transparent;
   }
 
   span {

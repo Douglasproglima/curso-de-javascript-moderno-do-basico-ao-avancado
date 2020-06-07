@@ -25,6 +25,7 @@ export default function Students() {
 
   return (
     <Container>
+
       <Loading isLoading={isLoading} />
       <h2>Alunos</h2>
       <hr></hr>
