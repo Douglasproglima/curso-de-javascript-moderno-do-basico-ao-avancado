@@ -39,7 +39,13 @@ function persistRehydrate(payload) {
   }
 }
 
+function registerRequest(payload) {
+  const { name, email, password, id } = payload;
+  console.log(payload);
+}
+
 export default all([
   takeLatest(types.LOGIN_REQUEST, loginRequest),
   takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
+  takeLatest(types.REGISTER_REQUEST, registerRequest),
 ]);

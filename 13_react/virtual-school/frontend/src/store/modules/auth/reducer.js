@@ -3,7 +3,7 @@ import * as types from '../types';
 const initialState = {
   isLoggedIn: false,
   token: false,
-  user: {},
+  user: { },
   isLoading: false,
 };
 
