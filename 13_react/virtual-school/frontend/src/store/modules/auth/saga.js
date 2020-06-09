@@ -5,7 +5,6 @@ import { get } from 'lodash';
 import * as actions from './actions';
 import * as types from '../types';
 
-
 import axios from '../../../services/axios';
 import history from '../../../services/history';
 
@@ -35,13 +34,52 @@ function persistRehydrate(payload) {
     if(!token) return;
       axios.defaults.headers.Authorization = `Bearer ${ token }`;
   } catch (error) {
-    toast.error('');
+    toast.error('Erro ao recuperar token');
   }
 }
 
-function registerRequest(payload) {
-  const { name, email, password, id } = payload;
-  console.log(payload);
+// eslint-disable-next-line consistent-return
+function* registerRequest({ payload }) {
+  const { id, name, email, password } = payload;
+
+  try {
+    //CREATE/UPDATE USERS
+    if(id) {
+      yield call(axios.put, '/users', {
+        email,
+        name,
+        password: password || undefined,
+      });
+      toast.success('Conta alterada com sucesso.');
+      yield put(actions.registerUpdatedSuccess({ name, email, password }));
+    } else {
+      yield call(axios.post, '/users', {
+        name,
+        email,
+        password,
+      });
+      toast.success('Conta criada com sucesso!');
+      yield put(actions.registerCreatedSuccess({ name, email, password }));
+      history.push('/login');
+    }
+  } catch (e) {
+    const errors = get(e, 'response.data.errors', []);
+    const status = get(e, 'response.status', 0);
+
+    if (status === 401) {
+      toast.error('Você precisa fazer login novamente.');
+      yield put(actions.loginFailure());
+      return history.push('/login');
+    }
+
+    if (errors.length > 0) {
+      errors.map(error => toast.error(error));
+    } else {
+      toast.error('Erro desconhecido');
+    }
+
+    return yield put(actions.registerFailure());
+  }
 }
 
 export default all([
