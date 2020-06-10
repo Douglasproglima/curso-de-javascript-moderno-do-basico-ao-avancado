@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaWindowClose, FaExclamationCircle } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
 import { StudentContainer, ProfilePicture } from './styled';
 import axios from '../../services/axios';
+import history from '../../services/history';
+import * as actions from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
+import { toast } from 'react-toastify';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
   const [isLoading , setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getData() {
@@ -23,6 +28,38 @@ export default function Students() {
     getData();
   }, []);
 
+  const handleDeleteAsk = e => {
+    e.preventDefault();
+    const exclamationIcon = e.currentTarget.nextSibling;
+    exclamationIcon.setAttribute('display', 'block');
+    e.currentTarget.remove();
+  };
+
+  const handleDelete = async (e, idStudent, index) => {
+    e.persist();
+
+    try {
+      setIsLoading(true);
+      await axios.delete(`/students/${idStudent}`);
+      const newStudents = [...students];
+      newStudents.splice(index, 1);
+      setStudents(newStudents);
+      setIsLoading(false);
+
+    } catch (err) {
+      const status = get(err, 'response.status', 0);
+      if(status === 401) {
+        toast.warn('Necessário fazer login para completar essa ação.');
+        dispatch(actions.loginFailure());
+      } else {
+        toast.error('Ocorreu um erro ao excluir aluno. Erro: ' + err);
+        dispatch(actions.loginFailure());
+      }
+
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Container>
 
@@ -31,7 +68,7 @@ export default function Students() {
       <hr></hr>
 
       <StudentContainer>
-        {students.map(student => (
+        {students.map((student, index) => (
           <div key={String(student.id)}>
             <ProfilePicture>
               {get(student, 'Photos[0].url', false) ? (
@@ -48,9 +85,15 @@ export default function Students() {
               <FaEdit size={18} color='#4fc3f7' />
             </Link>
 
-            <Link to={`/student/${student.id}/delete`}>
+            <Link onClick={handleDeleteAsk} to={`/student/${student.id}/delete`}>
               <FaWindowClose size={18} color='#ff6e40' />
             </Link>
+
+            <FaExclamationCircle
+              size={20} color="#f9c851"
+              display="none" cursor="pointer"
+              onClick={e => handleDelete(e, student.id, index)}
+            />
           </div>
         ))}
       </StudentContainer>

@@ -143,7 +143,7 @@ export default createGlobalStyle`
   }
 
   body .Toastify .Toastify__toast-container .Toastify__toast--warning {
-    background: ${colors.warning}
+    background: ${colors.warning};
   }
 
   body .Toastify .Toastify__toast-container .Toastify__toast--error {
