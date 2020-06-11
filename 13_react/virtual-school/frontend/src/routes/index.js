@@ -15,9 +15,9 @@ export default function Routes() {
       {/* isClosed define que a rota está fechada para o acesso externo  */}
       {/* <MyRoute exact path="/" component={Students} isClosed /> */}
       <PrivateRoute exact path="/" component={Students} isClosed={false} />
-      <PrivateRoute exact path="/student/:id/edit" component={Student} isClosed/>
-      <PrivateRoute exact path="/student/" component={Student} isClosed />
-      <PrivateRoute exact path="/photos/:id" component={Photos} isClosed />
+      <PrivateRoute exact path="/student/:id/edit" component={Student} isClosed={false} />
+      <PrivateRoute exact path="/student/" component={Student} isClosed={false} />
+      <PrivateRoute exact path="/photos/:id" component={Photos}  isClosed={true} />
       <PrivateRoute exact path="/login/" component={Login} isClosed={false} />
       <PrivateRoute exact path="/register/" component={Register} isClosed={false} />
       <PrivateRoute path="*" component={Page404} />

@@ -5,7 +5,7 @@ import { FaUserCircle, FaEdit, FaWindowClose, FaExclamationCircle } from 'react-
 import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyles';
-import { StudentContainer, ProfilePicture } from './styled';
+import { StudentContainer, ProfilePicture, NewStudent } from './styled';
 import axios from '../../services/axios';
 import history from '../../services/history';
 import * as actions from '../../store/modules/auth/actions';
@@ -66,6 +66,10 @@ export default function Students() {
       <Loading isLoading={isLoading} />
       <h2>Alunos</h2>
       <hr></hr>
+
+      <NewStudent to="/student/">
+        <button type="submit">Novo</button>
+      </NewStudent>
 
       <StudentContainer>
         {students.map((student, index) => (

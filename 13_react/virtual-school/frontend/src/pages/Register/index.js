@@ -30,7 +30,7 @@ export default function Register() {
     e.preventDefault();
     let formErrors = false;
 
-    if(name.length < 3 || name.length > 30) {
+    if(name.length < 4 || name.length > 20) {
       formErrors = true;
       toast.error('O campo Nome precisa conter entre 4 há 20 caracteres.');
     }
