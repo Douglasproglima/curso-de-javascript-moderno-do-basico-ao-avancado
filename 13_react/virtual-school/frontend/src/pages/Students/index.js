@@ -2,27 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
 import { FaUserCircle, FaEdit, FaWindowClose, FaExclamationCircle } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { toast } from 'react-toastify';
 import { Container } from '../../styles/GlobalStyles';
 import { StudentContainer, ProfilePicture, NewStudent } from './styled';
 import axios from '../../services/axios';
 import history from '../../services/history';
 import * as actions from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
-import { toast } from 'react-toastify';
 
 export default function Students() {
+  const dispatch = useDispatch();
   const [students, setStudents] = useState([]);
   const [isLoading , setIsLoading] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     async function getData() {
-      setIsLoading(true);
-      const response =  await axios.get('/students');
-      setStudents(response.data);
-      setIsLoading(false);
+
+      try {
+        setIsLoading(true);
+        const response = await axios.get('/students');
+        console.log(response);
+        setStudents(response.data);
+        setIsLoading(false);
+
+      } catch (err) {
+        setIsLoading(false);
+
+        const status = get(err, 'response.status', 0);
+        const data = get(err, 'response.data', {});
+        const errors = get(data, 'errors', []);
+
+        if (errors.length > 0) {
+          errors.map((error) => toast.error(error));
+        } else {
+          toast.error('Erro desconhecido');
+        }
+
+        console.log(status);
+        if (status === 401) dispatch(actions.loginFailure());
+        history.push('/login');
+      }
     }
 
     getData();

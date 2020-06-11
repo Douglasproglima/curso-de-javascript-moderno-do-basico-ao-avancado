@@ -1,29 +1,68 @@
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
+import React, { useState, useEffect } from 'react';
 import { isEmail, isInt, isFloat } from 'validator';
 import { get } from 'lodash';
 import { PropTypes } from 'prop-types';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { FaUserCircle, FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
+import axios from '../../services/axios';
+import history from '../../services/history';
 import { Container } from '../../styles/GlobalStyles';
-import { Form } from './styled';
+import { Form, ProfilePicture, Title } from './styled';
 import Loading from '../../components/Loading';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Student({ match }) {
+
   const id = get(match, 'params.id', 0);
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
-  const [age, setAge] = useState('');
+  const [age, setAge] = useState('7');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleSumit = e => {
+  useEffect(() => {
+    if(!id) return;
+
+    async function getData() {
+
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(`/students/${id}`);
+        const Photo = get(data, 'Photos[0].url', '');
+
+        setName(data.name);
+        setLastname(data.lastname);
+        setEmail(data.email);
+        setAge(data.age);
+        setWeight(data.weight);
+        setHeight(data.height);
+
+        setIsLoading(false);
+      } catch (err) {
+        setIsLoading(false);
+
+        const status = get(err, 'response.status', 0);
+        const errors = get(err, 'response.data.errors', []);
+
+        if(status === 400) errors.map(error => toast.error(error));
+        history.push('/');
+      }
+
+    }
+
+    getData();
+  }, []);
+
+  const handleSubmit = async e => {
     e.preventDefault();
 
     let formErrors = false;
-
-    if(!id) return;
 
     if(name.length < 4 || name.length > 20) {
       formErrors = true;
@@ -55,12 +94,42 @@ export default function Student({ match }) {
       toast.error('Altura precisa ser um número inteiro ou decimal.');
     }
 
-    if(formErrors) return;
+    if (formErrors) return;
 
     try {
+      setIsLoading(true);
 
+      if(id) {
+        await axios.put(`/students/${id}`, {
+          name, lastname, email, age, weight, height,
+        });
+
+        toast.success('Aluno(a) alterado(a) com sucesso!');
+      } else {
+        const data = await axios.post(`/students/`, {
+          name, lastname, email, age, weight, height,
+        });
+
+        toast.success('Aluno(a) cadastrado(a) com sucesso!');
+        history.push(`/student/${data.id}/edit`);
+      }
+
+      setIsLoading(false);
     } catch (err) {
+      const status = get(err, 'response.status', 0);
+      const data = get(err, 'response.data', {});
+      const errors = get(data, 'errors', []);
 
+      if (errors.length > 0) {
+        errors.map((error) => toast.error(error));
+      } else {
+        toast.error('Erro desconhecido');
+      }
+
+      if (status === 401) {
+        dispatch(actions.loginFailure());
+        history.push(`/login`);
+      }
     }
   }
 
@@ -71,7 +140,7 @@ export default function Student({ match }) {
       <h2>{id > 0 ? 'Editar' : 'Novo'} Aluno</h2>
       <hr></hr>
 
-      <Form onSubmit={handleSumit}>
+      <Form onSubmit={handleSubmit}>
         <input
           type="text"
           value={name}
@@ -103,14 +172,15 @@ export default function Student({ match }) {
           type="number"
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
-          placeholder="Altura"
+          placeholder="Peso"
         />
         <input
           type="number"
           value={height}
           onChange={(e) => setHeight(e.target.value)}
-          placeholder="Idade"
+          placeholder="Altura"
         />
+
         <button type="submit">Salvar</button>
       </Form>
     </Container>

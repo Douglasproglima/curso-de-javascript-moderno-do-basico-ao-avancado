@@ -4,7 +4,7 @@ import axios from '../../../services/axios';
 const initialState = {
   isLoggedIn: false,
   token: false,
-  user: { },
+  user: {},
   isLoading: false,
 };
 

@@ -23,14 +23,13 @@ function* loginRequest({ payload }) {
     history.push(payload.prevPath);
   } catch (error) {
     toast.error('Usuário ou senha inválidos.');
-
     yield put(actions.loginFailure());
   }
 }
 
 function persistRehydrate(payload) {
   try {
-    const token = get(payload, 'auth.token'); //persistRehydrate
+    const token = get(payload, 'auth.token', ''); //persistRehydrate
     if(!token) return;
       axios.defaults.headers.Authorization = `Bearer ${ token }`;
   } catch (error) {
