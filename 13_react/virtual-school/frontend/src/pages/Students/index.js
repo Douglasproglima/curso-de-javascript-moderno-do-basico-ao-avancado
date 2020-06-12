@@ -23,7 +23,7 @@ export default function Students() {
       try {
         setIsLoading(true);
         const response = await axios.get('/students');
-        console.log(response);
+        //console.log(response);
         setStudents(response.data);
         setIsLoading(false);
 
@@ -40,9 +40,11 @@ export default function Students() {
           toast.error('Erro desconhecido');
         }
 
-        console.log(status);
-        if (status === 401) dispatch(actions.loginFailure());
-        history.push('/login');
+        //console.log(status);
+        if (status === 401) {
+          dispatch(actions.loginFailure());
+          history.push('/login');
+        }
       }
     }
 

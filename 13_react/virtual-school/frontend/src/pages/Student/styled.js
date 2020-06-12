@@ -40,7 +40,7 @@ export const ProfilePicture = styled.div`
     border: none;
     position: absolute;
     bottom: 0;
-    color: ${colors.white};
+    color: ${colors.purple};
     background: ${colors.backgroudBody};
     width: 36px;
     height: 36px;

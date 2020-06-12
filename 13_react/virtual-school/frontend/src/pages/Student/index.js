@@ -10,19 +10,20 @@ import { Link } from 'react-router-dom';
 import axios from '../../services/axios';
 import history from '../../services/history';
 import { Container } from '../../styles/GlobalStyles';
-import { Form, ProfilePicture, Title } from './styled';
+import { Form, ProfilePicture } from './styled';
 import Loading from '../../components/Loading';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Student({ match }) {
 
-  const id = get(match, 'params.id', 0);
+  const id = get(match, 'params.id', '');
   const [name, setName] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('7');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [photo, setPhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -42,6 +43,7 @@ export default function Student({ match }) {
         setAge(data.age);
         setWeight(data.weight);
         setHeight(data.height);
+        setPhoto(Photo);
 
         setIsLoading(false);
       } catch (err) {
@@ -137,8 +139,22 @@ export default function Student({ match }) {
     <Container>
       <Loading isLoading={isLoading} />
 
-      <h2>{id > 0 ? 'Editar' : 'Novo'} Aluno</h2>
+      <h1>{id > 0 ? 'Editar' : 'Novo'} Aluno</h1>
       <hr></hr>
+
+      {id && (
+        <ProfilePicture>
+          {photo ? (
+            <img src={photo} alt={name}></img>
+          ) : (
+            <FaUserCircle size={124} />
+          )}
+          <Link to={`/photos/${id}`}>
+            <FaEdit size={24} />
+          </Link>
+        </ProfilePicture>
+      )}
+
 
       <Form onSubmit={handleSubmit}>
         <input
