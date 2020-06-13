@@ -115,7 +115,7 @@ class StudentController {
 
         await student.destroy();
         return res.json({
-          message: 'Registro deletado com sucesso',
+          deleted: 'Registro deletado com sucesso',
         });
       } catch (err) {
         return res.status(400).json({

@@ -2,20 +2,14 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-export default function PrivateRoute({
-  component: Component,
-  isClosed,
-  ...restProperties
-}) {
-  const isLoggeIn = useSelector(state =>  state.auth.isLoggeIn); // Vai estar presente dentro do estado do Redux
 
-  if (isClosed && !isLoggeIn) {
+export default function PrivateRoute({component: Component, isClosed, ...restProperties }) {
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+
+  if (isClosed && !isLoggedIn) {
     return (
       <Redirect
-        to={{
-          pathname: '/login',
-          state: { prevPath: restProperties.location.pathname },
-        }}
+        to={{ pathname: '/login', state: { prevPath: restProperties.location.pathname } }}
       />
     );
   }
@@ -32,6 +26,5 @@ PrivateRoute.defaultProps = {
 PrivateRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
-
-  isClosed: PropTypes.bool,
+  isClosed: PropTypes.bool
 };

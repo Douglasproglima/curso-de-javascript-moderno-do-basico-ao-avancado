@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
 import { FaUserCircle, FaEdit, FaWindowClose, FaExclamationCircle } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+
 import { Container } from '../../styles/GlobalStyles';
 import { StudentContainer, ProfilePicture, NewStudent } from './styled';
 import axios from '../../services/axios';
@@ -90,9 +90,9 @@ export default function Students() {
       <h2>Alunos</h2>
       <hr></hr>
 
-      <NewStudent to="/student/">
-        <button type="submit">Novo</button>
-      </NewStudent>
+        <NewStudent to="/student/">
+          <button type="submit">Novo</button>
+        </NewStudent>
 
       <StudentContainer>
         {students.map((student, index) => (
