@@ -49,11 +49,14 @@ export default function Student({ match }) {
       } catch (err) {
         setIsLoading(false);
 
-        const status = get(err, 'response.status', 0);
+        const status = get(err, 'response.status', '');
         const errors = get(err, 'response.data.errors', []);
 
         if(status === 400) errors.map(error => toast.error(error));
-        history.push('/');
+        if(status === 401) {
+          dispatch(actions.loginFailure());
+          history.push(`/login`);
+        }
       }
 
     }
@@ -107,6 +110,7 @@ export default function Student({ match }) {
         });
 
         toast.success('Aluno(a) alterado(a) com sucesso!');
+        history.push(`/`);
       } else {
         const data = await axios.post(`/students/`, {
           name, lastname, email, age, weight, height,
@@ -128,7 +132,7 @@ export default function Student({ match }) {
         toast.error('Erro desconhecido');
       }
 
-      if (status === 401) {
+      if(status === 401) {
         dispatch(actions.loginFailure());
         history.push(`/login`);
       }
