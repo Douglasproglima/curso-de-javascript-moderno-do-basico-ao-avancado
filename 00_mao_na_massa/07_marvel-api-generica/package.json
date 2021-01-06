@@ -17,7 +17,7 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cache": "^2.3.1",
     "clean": "^4.0.2",
     "core.js": "^0.4.2",
